@@ -1,0 +1,277 @@
+{
+  "version": 8,
+  "name": "Brandenburg Address Points",
+  "metadata": {"maputnik:renderer": "mbgljs"},
+  "sources": {
+    "geoadr": {
+      "type": "vector",
+      "tiles": [
+        "https://hfs.github.io/brandenburg-addresses/tiles/{z}/{x}/{y}.mvt"
+      ],
+      "minZoom": 0,
+      "maxZoom": 14,
+      "maxzoom": 14
+    }
+  },
+  "sprite": "",
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {"id": "background", "type": "background"},
+    {
+      "id": "point_match_16+",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "public.geoadr_matches",
+      "minzoom": 16,
+      "maxzoom": 24,
+      "filter": ["all", ["==", "has_match", true]],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "circle-color": {
+          "property": "distance",
+          "type": "exponential",
+          "stops": [
+            [{"zoom": 0, "value": 0}, "#ffffcc"],
+            [{"zoom": 0, "value": 50}, "#a1dab4"],
+            [{"zoom": 0, "value": 100}, "#41b6c4"],
+            [{"zoom": 0, "value": 150}, "#2c7fb8"],
+            [{"zoom": 0, "value": 250}, "#253494"]
+          ]
+        },
+        "circle-radius": 5
+      }
+    },
+    {
+      "id": "point_match_14-16",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "public.geoadr_matches",
+      "minzoom": 14,
+      "maxzoom": 16,
+      "filter": ["all", ["==", "has_match", true]],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "circle-color": {
+          "property": "distance",
+          "type": "exponential",
+          "stops": [
+            [{"zoom": 0, "value": 0}, "#ffffcc"],
+            [{"zoom": 0, "value": 50}, "#a1dab4"],
+            [{"zoom": 0, "value": 100}, "#41b6c4"],
+            [{"zoom": 0, "value": 150}, "#2c7fb8"],
+            [{"zoom": 0, "value": 250}, "#253494"]
+          ]
+        },
+        "circle-radius": 2
+      }
+    },
+    {
+      "id": "point_match_13",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "public.geoadr_matches_point",
+      "minzoom": 13,
+      "maxzoom": 14,
+      "filter": ["all", ["==", "has_match", true]],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "circle-color": {
+          "property": "distance",
+          "type": "exponential",
+          "stops": [
+            [{"zoom": 0, "value": 0}, "#ffffcc"],
+            [{"zoom": 0, "value": 50}, "#a1dab4"],
+            [{"zoom": 0, "value": 100}, "#41b6c4"],
+            [{"zoom": 0, "value": 150}, "#2c7fb8"],
+            [{"zoom": 0, "value": 250}, "#253494"]
+          ]
+        },
+        "circle-radius": 2
+      }
+    },
+    {
+      "id": "point_missing_16+",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "public.geoadr_matches",
+      "minzoom": 16,
+      "maxzoom": 24,
+      "filter": ["all", ["==", "has_match", false]],
+      "layout": {"visibility": "visible"},
+      "paint": {"circle-color": "rgba(218, 64, 150, 1)", "circle-radius": 5}
+    },
+    {
+      "id": "point_missing_14-16",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "public.geoadr_matches",
+      "minzoom": 14,
+      "maxzoom": 16,
+      "filter": ["all", ["==", "has_match", false]],
+      "layout": {"visibility": "visible"},
+      "paint": {"circle-color": "rgba(218, 64, 150, 1)", "circle-radius": 2}
+    },
+    {
+      "id": "point_missing_13",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "public.geoadr_matches_point",
+      "minzoom": 13,
+      "maxzoom": 14,
+      "filter": ["all", ["==", "has_match", false]],
+      "layout": {"visibility": "visible"},
+      "paint": {"circle-color": "rgba(218, 64, 150, 1)", "circle-radius": 2}
+    },
+    {
+      "id": "overview_5",
+      "type": "fill",
+      "source": "geoadr",
+      "source-layer": "geoadr_overview",
+      "minzoom": 0,
+      "maxzoom": 6,
+      "paint": {
+        "fill-color": {
+          "property": "missing",
+          "type": "interval",
+          "stops": [
+            [{"zoom": 0, "value": 0}, "#ffffb2"],
+            [{"zoom": 0, "value": 32}, "#ffe687"],
+            [{"zoom": 0, "value": 15840}, "#fecc5c"],
+            [{"zoom": 0, "value": 39008}, "#fead4c"],
+            [{"zoom": 0, "value": 70704}, "#fd8d3c"],
+            [{"zoom": 0, "value": 97568}, "#f7642e"],
+            [{"zoom": 0, "value": 116400}, "#f03b20"],
+            [{"zoom": 0, "value": 150992}, "#d71e23"],
+            [{"zoom": 0, "value": 195024}, "#bd0026"]
+          ]
+        }
+      }
+    },
+    {
+      "id": "overview_6",
+      "type": "fill",
+      "source": "geoadr",
+      "source-layer": "geoadr_overview",
+      "minzoom": 6,
+      "maxzoom": 7,
+      "paint": {
+        "fill-color": {
+          "property": "missing",
+          "type": "interval",
+          "stops": [
+            [{"zoom": 0, "value": 0}, "#ffffb2"],
+            [{"zoom": 0, "value": 8}, "#ffe687"],
+            [{"zoom": 0, "value": 1448}, "#fecc5c"],
+            [{"zoom": 0, "value": 4720}, "#fead4c"],
+            [{"zoom": 0, "value": 9232}, "#fd8d3c"],
+            [{"zoom": 0, "value": 15328}, "#f7642e"],
+            [{"zoom": 0, "value": 26560}, "#f03b20"],
+            [{"zoom": 0, "value": 30216}, "#d71e23"],
+            [{"zoom": 0, "value": 33728}, "#bd0026"]
+          ]
+        }
+      }
+    },
+    {
+      "id": "overview_7",
+      "type": "fill",
+      "source": "geoadr",
+      "source-layer": "geoadr_overview",
+      "minzoom": 7,
+      "maxzoom": 8,
+      "paint": {
+        "fill-color": {
+          "property": "missing",
+          "type": "interval",
+          "stops": [
+            [{"zoom": 0, "value": 0}, "#ffffb2"],
+            [{"zoom": 0, "value": 4}, "#ffe687"],
+            [{"zoom": 0, "value": 176}, "#fecc5c"],
+            [{"zoom": 0, "value": 540}, "#fead4c"],
+            [{"zoom": 0, "value": 1104}, "#fd8d3c"],
+            [{"zoom": 0, "value": 2004}, "#f7642e"],
+            [{"zoom": 0, "value": 3556}, "#f03b20"],
+            [{"zoom": 0, "value": 5116}, "#d71e23"],
+            [{"zoom": 0, "value": 6800}, "#bd0026"]
+          ]
+        }
+      }
+    },
+    {
+      "id": "overview_8",
+      "type": "fill",
+      "source": "geoadr",
+      "source-layer": "geoadr_overview",
+      "minzoom": 8,
+      "maxzoom": 9,
+      "paint": {
+        "fill-color": {
+          "property": "missing",
+          "type": "interval",
+          "stops": [
+            [{"zoom": 0, "value": 0}, "#ffffb2"],
+            [{"zoom": 0, "value": 2}, "#ffe687"],
+            [{"zoom": 0, "value": 34}, "#fecc5c"],
+            [{"zoom": 0, "value": 96}, "#fead4c"],
+            [{"zoom": 0, "value": 198}, "#fd8d3c"],
+            [{"zoom": 0, "value": 366}, "#f7642e"],
+            [{"zoom": 0, "value": 614}, "#f03b20"],
+            [{"zoom": 0, "value": 908}, "#d71e23"],
+            [{"zoom": 0, "value": 1710}, "#bd0026"]
+          ]
+        }
+      }
+    },
+    {
+      "id": "overview_9",
+      "type": "fill",
+      "source": "geoadr",
+      "source-layer": "geoadr_overview",
+      "minzoom": 9,
+      "maxzoom": 10,
+      "paint": {
+        "fill-color": {
+          "property": "missing",
+          "type": "interval",
+          "stops": [
+            [{"zoom": 0, "value": 0}, "#ffffb2"],
+            [{"zoom": 0, "value": 1}, "#ffe687"],
+            [{"zoom": 0, "value": 8}, "#fecc5c"],
+            [{"zoom": 0, "value": 19}, "#fead4c"],
+            [{"zoom": 0, "value": 33}, "#fd8d3c"],
+            [{"zoom": 0, "value": 51}, "#f7642e"],
+            [{"zoom": 0, "value": 74}, "#f03b20"],
+            [{"zoom": 0, "value": 111}, "#d71e23"],
+            [{"zoom": 0, "value": 311}, "#bd0026"]
+          ]
+        }
+      }
+    },
+    {
+      "id": "overview_10-13",
+      "type": "fill",
+      "source": "geoadr",
+      "source-layer": "geoadr_overview",
+      "minzoom": 10,
+      "maxzoom": 13,
+      "paint": {
+        "fill-color": {
+          "property": "missing",
+          "type": "interval",
+          "stops": [
+            [{"zoom": 0, "value": 0}, "#ffffb2"],
+            [{"zoom": 0, "value": 1}, "#ffe687"],
+            [{"zoom": 0, "value": 4}, "#fecc5c"],
+            [{"zoom": 0, "value": 9}, "#fead4c"],
+            [{"zoom": 0, "value": 14}, "#fd8d3c"],
+            [{"zoom": 0, "value": 19}, "#f7642e"],
+            [{"zoom": 0, "value": 26}, "#f03b20"],
+            [{"zoom": 0, "value": 34}, "#d71e23"],
+            [{"zoom": 0, "value": 45}, "#bd0026"]
+          ]
+        }
+      }
+    }
+  ],
+  "id": "brandenburg-address-points-v1"
+}
