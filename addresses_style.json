@@ -16,28 +16,42 @@
   "sprite": "",
   "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
   "layers": [
-    {"id": "background", "type": "background"},
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {"background-color": "rgba(0, 0, 0, 1)"}
+    },
     {
       "id": "point_match_16+",
       "type": "circle",
       "source": "geoadr",
       "source-layer": "public.geoadr_matches",
       "minzoom": 16,
-      "maxzoom": 24,
+      "maxzoom": 18,
       "filter": ["all", ["==", "has_match", true]],
       "layout": {"visibility": "visible"},
       "paint": {
-        "circle-color": {
-          "property": "distance",
-          "type": "exponential",
-          "stops": [
-            [{"zoom": 0, "value": 0}, "#ffffcc"],
-            [{"zoom": 0, "value": 50}, "#a1dab4"],
-            [{"zoom": 0, "value": 100}, "#41b6c4"],
-            [{"zoom": 0, "value": 150}, "#2c7fb8"],
-            [{"zoom": 0, "value": 250}, "#253494"]
+        "circle-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          0,
+          [
+            "interpolate",
+            ["linear"],
+            ["number", ["get", "distance"]],
+            0,
+            "#ffffcc",
+            50,
+            "#a1dab4",
+            100,
+            "#41b6c4",
+            150,
+            "#2c7fb8",
+            250,
+            "#253494"
           ]
-        },
+        ],
         "circle-radius": 5
       }
     },
@@ -62,7 +76,7 @@
             [{"zoom": 0, "value": 250}, "#253494"]
           ]
         },
-        "circle-radius": 2
+        "circle-radius": {"stops": [[14, 2], [16, 5]]}
       }
     },
     {
@@ -95,7 +109,7 @@
       "source": "geoadr",
       "source-layer": "public.geoadr_matches",
       "minzoom": 16,
-      "maxzoom": 24,
+      "maxzoom": 18,
       "filter": ["all", ["==", "has_match", false]],
       "layout": {"visibility": "visible"},
       "paint": {"circle-color": "rgba(218, 64, 150, 1)", "circle-radius": 5}
@@ -109,7 +123,10 @@
       "maxzoom": 16,
       "filter": ["all", ["==", "has_match", false]],
       "layout": {"visibility": "visible"},
-      "paint": {"circle-color": "rgba(218, 64, 150, 1)", "circle-radius": 2}
+      "paint": {
+        "circle-color": "rgba(218, 64, 150, 1)",
+        "circle-radius": {"stops": [[14, 2], [16, 5]]}
+      }
     },
     {
       "id": "point_missing_13",
@@ -271,6 +288,113 @@
           ]
         }
       }
+    },
+    {
+      "id": "hnr_match_18",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "public.geoadr_matches",
+      "minzoom": 18,
+      "maxzoom": 20,
+      "filter": ["all", ["==", "has_match", true]],
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-allow-overlap": true
+      },
+      "paint": {
+        "text-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          0,
+          [
+            "interpolate",
+            ["linear"],
+            ["number", ["get", "distance"]],
+            0,
+            "#ffffcc",
+            50,
+            "#a1dab4",
+            100,
+            "#41b6c4",
+            150,
+            "#2c7fb8",
+            250,
+            "#253494"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hnr_match_20+",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "public.geoadr_matches",
+      "minzoom": 20,
+      "filter": ["all", ["==", "has_match", true]],
+      "layout": {
+        "text-field": "{hnradz}, {stn}, {plz} {ottname}, {gmdname}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-justify": "left",
+        "text-anchor": "left",
+        "icon-text-fit": "none",
+        "text-allow-overlap": true
+      },
+      "paint": {
+        "text-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          0,
+          [
+            "interpolate",
+            ["linear"],
+            ["number", ["get", "distance"]],
+            0,
+            "#ffffcc",
+            50,
+            "#a1dab4",
+            100,
+            "#41b6c4",
+            150,
+            "#2c7fb8",
+            250,
+            "#253494"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hnr_missing_18",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "public.geoadr_matches",
+      "minzoom": 18,
+      "maxzoom": 20,
+      "filter": ["all", ["==", "has_match", false]],
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-allow-overlap": true
+      },
+      "paint": {"text-color": "rgba(218, 64, 150, 1)"}
+    },
+    {
+      "id": "hnr_missing_20+",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "public.geoadr_matches",
+      "minzoom": 20,
+      "filter": ["all", ["==", "has_match", false]],
+      "layout": {
+        "text-field": "{hnradz}, {stn}, {plz} {ottname}, {gmdname}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-justify": "left",
+        "text-anchor": "left",
+        "text-allow-overlap": true
+      },
+      "paint": {"text-color": "rgba(218, 64, 150, 1)"}
     }
   ],
   "id": "brandenburg-address-points-v1"
