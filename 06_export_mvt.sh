@@ -44,5 +44,5 @@ export_tiles() {
 # Zoom levels are mutually exclusive, because tiles from all tables are merged
 # in a single directory
 export_tiles geoadr_overview 0 12 geoadr_aggregation
-export_tiles geoadr_matches_point 13 13
+export_tiles geoadr_point 13 13 geoadr_matches
 export_tiles geoadr_matches 14 14

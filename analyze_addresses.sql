@@ -91,30 +91,102 @@ ALTER TABLE geoadr_aggregation ALTER COLUMN geom TYPE geometry(Polygon, 4326);
 CREATE INDEX ON geoadr_aggregation(resolution);
 CREATE INDEX ON geoadr_aggregation USING GIST(geom);
 
+-- Calculate color breaks per resolution using k-means. The idea is similar to
+-- Jenks Natural Breaks. Going with k-means because an extension is readily
+-- available for PostgreSQL
+DROP TABLE IF EXISTS breakpoints;
+CREATE TABLE breakpoints AS
+SELECT
+    "cluster" + 1 AS "cluster",
+    resolution,
+    MIN(value) AS bound_lower,
+    MAX(value) AS bound_upper
+FROM
+    generate_series(5, 10) AS res
+    CROSS JOIN LATERAL
+    -- Calculate the class bounds separately for each resolution
+    -- 0 is a special case and excluded in this part. Extra entries are added below with a UNION
+    (
+        SELECT
+            -- The kmeans function adds a cluster ID to every row
+            kmeans(
+                ARRAY[missing], -- which attributes too use for the clustering
+                8, -- Number of desired classes. One more class for 0 is added below
+                CASE
+                    WHEN res = 10 THEN
+                        -- Using the percentiles doesn't work well for resolution 10, because it has too many "1".
+                        -- k-means then delivers too few classes.
+                        -- Just use the linearly spaced values in this case.
+                        ARRAY(SELECT generate_series(
+                            (SELECT MIN(missing) FROM geoadr_aggregation WHERE resolution = res AND missing > 0),
+                            (SELECT MAX(missing) FROM geoadr_aggregation WHERE resolution = res AND missing > 0),
+                            8
+                        ))
+                    ELSE
+                        -- Evenly spaced percentiles 0/7, 1/7, ...
+                        (
+                            SELECT
+                                percentile_cont(ARRAY(SELECT generate_series(0.0, 1.0, 1.0/7)))
+                                WITHIN GROUP (ORDER BY missing)
+                            FROM geoadr_aggregation
+                            WHERE resolution = res AND missing > 0
+                        )
+                    END
+            ) OVER () AS "cluster",
+            resolution,
+            missing AS value
+        FROM geoadr_aggregation WHERE resolution = res AND missing > 0
+    ) cluster_per_resolution
+GROUP BY resolution, "cluster"
+UNION ALL
+SELECT
+    0 AS "cluster",
+    resolution,
+    0 AS bound_lower,
+    0 AS bound_upper
+FROM
+    generate_series(5, 10) AS resolution
+;
 
--- Function to serve geoadr_aggregate as MVTs based on the requested zoom z
+
+-- Function to serve geoadr_aggregate as MVTs based on the requested zoom z.
+-- The tile contains one layer for each color interval.
 CREATE OR REPLACE
 FUNCTION public.geoadr_overview(z integer, x integer, y integer)
 RETURNS bytea
 AS $func$
     WITH
-    bounds AS (
-      SELECT ST_TileEnvelope(z, x, y) AS geom
-    ),
-    mvtgeom AS (
-      SELECT ST_AsMVTGeom(ST_Transform(g.geom, 3857), bounds.geom) AS geom,
-      g."match",
-      g.missing
-      FROM geoadr_aggregation g, bounds
-      WHERE
-        ST_Intersects(g.geom, ST_Transform(bounds.geom, 4326))
-        AND resolution = CASE
-          WHEN z <= 5 THEN 5
-          WHEN z >= 10 THEN 10
-          ELSE z
-        END
+    args AS (
+      SELECT
+        ST_TileEnvelope(z, x, y) AS bounds,
+          CASE
+            WHEN z <= 5 THEN 5
+            WHEN z >= 10 THEN 10
+            ELSE z
+          END AS resolution
     )
-    SELECT ST_AsMVT(mvtgeom, 'geoadr_overview') FROM mvtgeom;
+    SELECT STRING_AGG(mvt, '')
+    FROM (
+        SELECT ST_AsMVT(mvtgeom, 'geoadr_overview_interval' || "cluster") AS mvt
+        FROM (
+            SELECT
+                ST_AsMVTGeom(ST_Transform(g.geom, 3857), args.bounds) AS geom,
+                g."match",
+                g.missing,
+                b."cluster"
+            FROM
+                geoadr_aggregation g,
+                args,
+                breakpoints b
+            WHERE
+                ST_Intersects(g.geom, ST_Transform(args.bounds, 4326)) AND
+                args.resolution = g.resolution AND
+                args.resolution = b.resolution AND
+                g.missing >= b.bound_lower AND
+                g.missing <= b.bound_upper
+        ) mvtgeom
+        GROUP BY "cluster"
+    ) mvt_per_layer
 $func$
 LANGUAGE 'sql'
 STABLE
@@ -123,6 +195,45 @@ PARALLEL SAFE
 
 COMMENT ON FUNCTION geoadr_overview  IS 'Number of matched and missing house number coordinates, aggregated on a hexagonal grid';
 
--- Simplified version of table for MVT tiles at lower zoom levels
-CREATE OR REPLACE VIEW geoadr_matches_point AS
-SELECT has_match, distance, geom FROM geoadr_matches;
+-- Simplified version of table for MVT tiles at lower zoom levels containing
+-- only the point geometry but no details
+CREATE OR REPLACE
+FUNCTION public.geoadr_point(z integer, x integer, y integer)
+RETURNS bytea
+AS $func$
+    WITH
+    args AS (
+      SELECT
+        ST_TileEnvelope(z, x, y) AS bounds
+    )
+    SELECT STRING_AGG(mvt, '')
+    FROM (
+        SELECT ST_AsMVT(
+                mvtgeom,
+                CASE
+                    WHEN category = 0 THEN 'geoadr_point_match'
+                    WHEN category = 1 THEN 'geoadr_point_far'
+                    WHEN category = 2 THEN 'geoadr_point_missing'
+                END
+            ) AS mvt
+        FROM (
+            SELECT
+                ST_AsMVTGeom(ST_Transform(m.geom, 3857), args.bounds) AS geom,
+                CASE
+                    WHEN has_match AND distance <= 75 THEN 0
+                    WHEN has_match AND distance > 75 THEN 1
+                    WHEN NOT has_match THEN 2
+                END AS category
+            FROM
+                geoadr_matches m,
+                args
+            WHERE
+                ST_Intersects(m.geom, ST_Transform(args.bounds, 32633))
+        ) mvtgeom
+        GROUP BY category
+    ) mvt_per_layer
+$func$
+LANGUAGE 'sql'
+STABLE
+PARALLEL SAFE
+;
