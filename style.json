@@ -1,13 +1,16 @@
 {
   "version": 8,
   "name": "Brandenburg Address Points",
-  "metadata": {"maputnik:renderer": "mbgljs"},
+  "metadata": {
+    "maputnik:renderer": "mbgljs"
+  },
   "sources": {
     "geoadr": {
       "type": "vector",
-      "tiles": ["https://hfs.github.io/brandenburg-addresses/tiles/{z}/{x}/{y}.mvt"],
-      "minZoom": 0,
-      "maxZoom": 14,
+      "tiles": [
+        "https://hfs.github.io/brandenburg-addresses/tiles/{z}/{x}/{y}.mvt"
+      ],
+      "minzoom": 0,
       "maxzoom": 14
     }
   },
@@ -17,8 +20,12 @@
     {
       "id": "background",
       "type": "background",
-      "layout": {"visibility": "visible"},
-      "paint": {"background-color": "rgba(0, 0, 0, 1)"}
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "background-color": "#000000"
+      }
     },
     {
       "id": "overview_0",
@@ -27,7 +34,9 @@
       "source-layer": "geoadr_overview_interval0",
       "minzoom": 0,
       "maxzoom": 13,
-      "paint": {"fill-color": "#ffffb2"}
+      "paint": {
+        "fill-color": "#ffffb2"
+      }
     },
     {
       "id": "overview_1",
@@ -36,7 +45,9 @@
       "source-layer": "geoadr_overview_interval1",
       "minzoom": 0,
       "maxzoom": 13,
-      "paint": {"fill-color": "#ffe687"}
+      "paint": {
+        "fill-color": "#ffe687"
+      }
     },
     {
       "id": "overview_2",
@@ -45,7 +56,9 @@
       "source-layer": "geoadr_overview_interval2",
       "minzoom": 0,
       "maxzoom": 13,
-      "paint": {"fill-color": "#fecc5c"}
+      "paint": {
+        "fill-color": "#fecc5c"
+      }
     },
     {
       "id": "overview_3",
@@ -54,7 +67,9 @@
       "source-layer": "geoadr_overview_interval3",
       "minzoom": 0,
       "maxzoom": 13,
-      "paint": {"fill-color": "#fead4c"}
+      "paint": {
+        "fill-color": "#fead4c"
+      }
     },
     {
       "id": "overview_4",
@@ -63,7 +78,9 @@
       "source-layer": "geoadr_overview_interval4",
       "minzoom": 0,
       "maxzoom": 13,
-      "paint": {"fill-color": "#fd8d3c"}
+      "paint": {
+        "fill-color": "#fd8d3c"
+      }
     },
     {
       "id": "overview_5",
@@ -72,7 +89,9 @@
       "source-layer": "geoadr_overview_interval5",
       "minzoom": 0,
       "maxzoom": 13,
-      "paint": {"fill-color": "#fd8d3c"}
+      "paint": {
+        "fill-color": "#fd8d3c"
+      }
     },
     {
       "id": "overview_6",
@@ -81,7 +100,9 @@
       "source-layer": "geoadr_overview_interval6",
       "minzoom": 0,
       "maxzoom": 13,
-      "paint": {"fill-color": "#f03b20"}
+      "paint": {
+        "fill-color": "#f03b20"
+      }
     },
     {
       "id": "overview_7",
@@ -90,7 +111,9 @@
       "source-layer": "geoadr_overview_interval7",
       "minzoom": 0,
       "maxzoom": 13,
-      "paint": {"fill-color": "#d71e23"}
+      "paint": {
+        "fill-color": "#d71e23"
+      }
     },
     {
       "id": "overview_8",
@@ -99,7 +122,9 @@
       "source-layer": "geoadr_overview_interval8",
       "minzoom": 0,
       "maxzoom": 13,
-      "paint": {"fill-color": "#d71e23"}
+      "paint": {
+        "fill-color": "#d71e23"
+      }
     },
     {
       "id": "point_match_13",
@@ -108,8 +133,13 @@
       "source-layer": "geoadr_point_match",
       "minzoom": 13,
       "maxzoom": 14,
-      "layout": {"visibility": "visible"},
-      "paint": {"circle-color": "rgba(226, 226, 226, 1)", "circle-radius": 1}
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-color": "#E2E2E2",
+        "circle-radius": 1
+      }
     },
     {
       "id": "point_far_13",
@@ -118,8 +148,13 @@
       "source-layer": "geoadr_point_far",
       "minzoom": 13,
       "maxzoom": 14,
-      "layout": {"visibility": "visible"},
-      "paint": {"circle-color": "#2c7fb8", "circle-radius": 1}
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-color": "#2c7fb8",
+        "circle-radius": 1
+      }
     },
     {
       "id": "point_missing_13",
@@ -128,8 +163,13 @@
       "source-layer": "geoadr_point_missing",
       "minzoom": 13,
       "maxzoom": 14,
-      "layout": {"visibility": "visible"},
-      "paint": {"circle-color": "rgba(218, 64, 150, 1)", "circle-radius": 1}
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-color": "#DA4096",
+        "circle-radius": 1
+      }
     },
     {
       "id": "point_match_14",
@@ -138,8 +178,13 @@
       "source-layer": "geoadr_point_match",
       "minzoom": 14,
       "maxzoom": 15,
-      "layout": {"visibility": "visible"},
-      "paint": {"circle-color": "rgba(226, 226, 226, 1)", "circle-radius": 2}
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-color": "#E2E2E2",
+        "circle-radius": 2
+      }
     },
     {
       "id": "point_far_14",
@@ -148,8 +193,13 @@
       "source-layer": "geoadr_point_far",
       "minzoom": 14,
       "maxzoom": 15,
-      "layout": {"visibility": "visible"},
-      "paint": {"circle-color": "#2c7fb8", "circle-radius": 2}
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-color": "#2c7fb8",
+        "circle-radius": 2
+      }
     },
     {
       "id": "point_missing_14",
@@ -158,8 +208,13 @@
       "source-layer": "geoadr_point_missing",
       "minzoom": 14,
       "maxzoom": 15,
-      "layout": {"visibility": "visible"},
-      "paint": {"circle-color": "rgba(218, 64, 150, 1)", "circle-radius": 2}
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-color": "#DA4096",
+        "circle-radius": 2
+      }
     },
     {
       "id": "point_match_15",
@@ -168,8 +223,13 @@
       "source-layer": "geoadr_point_match",
       "minzoom": 15,
       "maxzoom": 16,
-      "layout": {"visibility": "visible"},
-      "paint": {"circle-color": "rgba(226, 226, 226, 1)", "circle-radius": 3}
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-color": "#E2E2E2",
+        "circle-radius": 3
+      }
     },
     {
       "id": "point_far_15",
@@ -178,8 +238,13 @@
       "source-layer": "geoadr_point_far",
       "minzoom": 15,
       "maxzoom": 16,
-      "layout": {"visibility": "visible"},
-      "paint": {"circle-color": "#2c7fb8", "circle-radius": 3}
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-color": "#2c7fb8",
+        "circle-radius": 3
+      }
     },
     {
       "id": "point_missing_15",
@@ -188,8 +253,13 @@
       "source-layer": "geoadr_point_missing",
       "minzoom": 15,
       "maxzoom": 16,
-      "layout": {"visibility": "visible"},
-      "paint": {"circle-color": "rgba(218, 64, 150, 1)", "circle-radius": 3}
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-color": "#DA4096",
+        "circle-radius": 3
+      }
     },
     {
       "id": "hnr_match_16",
@@ -200,12 +270,17 @@
       "maxzoom": 17,
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 12
       },
-      "paint": {"text-color": "rgba(255, 255, 255, 1)"}
+      "paint": {
+        "text-color": "#FFFFFF",
+        "text-halo-width": 0
+      }
     },
     {
       "id": "hnr_far_16",
@@ -216,12 +291,17 @@
       "maxzoom": 17,
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 12
       },
-      "paint": {"text-color": "#2c7fb8"}
+      "paint": {
+        "text-color": "#2c7fb8",
+        "text-halo-width": 0
+      }
     },
     {
       "id": "hnr_missing_16",
@@ -232,13 +312,18 @@
       "maxzoom": 17,
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 12,
         "icon-text-fit": "none"
       },
-      "paint": {"text-color": "rgba(218, 64, 150, 1)"}
+      "paint": {
+        "text-color": "#DA4096",
+        "text-halo-width": 0
+      }
     },
     {
       "id": "hnr_match_17",
@@ -249,12 +334,17 @@
       "maxzoom": 18,
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 14
       },
-      "paint": {"text-color": "rgba(255, 255, 255, 1)"}
+      "paint": {
+        "text-color": "#FFFFFF",
+        "text-halo-width": 0
+      }
     },
     {
       "id": "hnr_far_17",
@@ -265,12 +355,17 @@
       "maxzoom": 18,
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 14
       },
-      "paint": {"text-color": "#2c7fb8"}
+      "paint": {
+        "text-color": "#2c7fb8",
+        "text-halo-width": 0
+      }
     },
     {
       "id": "hnr_missing_17",
@@ -281,13 +376,18 @@
       "maxzoom": 18,
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 14,
         "icon-text-fit": "none"
       },
-      "paint": {"text-color": "rgba(218, 64, 150, 1)"}
+      "paint": {
+        "text-color": "#DA4096",
+        "text-halo-width": 0
+      }
     },
     {
       "id": "hnr_match_18",
@@ -298,11 +398,16 @@
       "maxzoom": 20,
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-allow-overlap": true,
         "visibility": "visible"
       },
-      "paint": {"text-color": "rgba(255, 255, 255, 1)"}
+      "paint": {
+        "text-color": "#FFFFFF",
+        "text-halo-width": 0
+      }
     },
     {
       "id": "hnr_far_18",
@@ -313,11 +418,16 @@
       "maxzoom": 20,
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-allow-overlap": true,
         "visibility": "visible"
       },
-      "paint": {"text-color": "#2c7fb8"}
+      "paint": {
+        "text-color": "#2c7fb8",
+        "text-halo-width": 0
+      }
     },
     {
       "id": "hnr_missing_18",
@@ -328,63 +438,83 @@
       "maxzoom": 20,
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 16,
         "icon-text-fit": "none"
       },
-      "paint": {"text-color": "rgba(218, 64, 150, 1)"}
+      "paint": {
+        "text-color": "#DA4096",
+        "text-halo-width": 0
+      }
     },
     {
-      "id": "hnr_match_20+",
+      "id": "hnr_match_20",
       "type": "symbol",
       "source": "geoadr",
       "source-layer": "geoadr_point_match",
       "minzoom": 20,
       "layout": {
         "text-field": "{hnradz}, {stn}, {plz} {ottname}, {gmdname}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-justify": "left",
         "text-anchor": "left",
         "icon-text-fit": "none",
         "text-allow-overlap": true,
         "visibility": "visible"
       },
-      "paint": {"text-color": "rgba(255, 255, 255, 1)"}
+      "paint": {
+        "text-color": "#FFFFFF",
+        "text-halo-width": 0
+      }
     },
     {
-      "id": "hnr_far_20+",
+      "id": "hnr_far_20",
       "type": "symbol",
       "source": "geoadr",
       "source-layer": "geoadr_point_far",
       "minzoom": 20,
       "layout": {
         "text-field": "{hnradz}, {stn}, {plz} {ottname}, {gmdname}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-justify": "left",
         "text-anchor": "left",
         "icon-text-fit": "none",
         "text-allow-overlap": true,
         "visibility": "visible"
       },
-      "paint": {"text-color": "#2c7fb8"}
+      "paint": {
+        "text-color": "#2c7fb8",
+        "text-halo-width": 0
+      }
     },
     {
-      "id": "hnr_missing_20+",
+      "id": "hnr_missing_20",
       "type": "symbol",
       "source": "geoadr",
       "source-layer": "geoadr_point_missing",
       "minzoom": 20,
       "layout": {
         "text-field": "{hnradz}, {stn}, {plz} {ottname}, {gmdname}",
-        "text-font": ["Roboto Condensed Regular"],
+        "text-font": [
+          "Droid Sans"
+        ],
         "text-justify": "left",
         "text-anchor": "left",
         "text-allow-overlap": true,
         "visibility": "visible"
       },
-      "paint": {"text-color": "rgba(218, 64, 150, 1)"}
+      "paint": {
+        "text-color": "#DA4096",
+        "text-halo-width": 0
+      }
     }
   ],
   "id": "brandenburg-address-points-v1"
