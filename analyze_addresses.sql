@@ -237,3 +237,50 @@ LANGUAGE 'sql'
 STABLE
 PARALLEL SAFE
 ;
+
+CREATE OR REPLACE
+FUNCTION public.geoadr_detail(z integer, x integer, y integer)
+RETURNS bytea
+AS $func$
+    WITH
+    args AS (
+      SELECT
+        ST_TileEnvelope(z, x, y) AS bounds
+    )
+    SELECT STRING_AGG(mvt, '')
+    FROM (
+        SELECT ST_AsMVT(
+                mvtgeom,
+                CASE
+                    WHEN category = 0 THEN 'geoadr_point_match'
+                    WHEN category = 1 THEN 'geoadr_point_far'
+                    WHEN category = 2 THEN 'geoadr_point_missing'
+                END
+            ) AS mvt
+        FROM (
+            SELECT
+                id,
+                stn,
+                hnradz,
+                gmdname,
+                ottname,
+                plz,
+                ST_AsMVTGeom(ST_Transform(m.geom, 3857), args.bounds) AS geom,
+                CASE
+                    WHEN has_match AND distance <= 75 THEN 0
+                    WHEN has_match AND distance > 75 THEN 1
+                    WHEN NOT has_match THEN 2
+                END AS category
+            FROM
+                geoadr_matches m,
+                args
+            WHERE
+                ST_Intersects(m.geom, ST_Transform(args.bounds, 32633))
+        ) mvtgeom
+        GROUP BY category
+    ) mvt_per_layer
+$func$
+LANGUAGE 'sql'
+STABLE
+PARALLEL SAFE
+;

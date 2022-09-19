@@ -17,6 +17,7 @@
     {
       "id": "background",
       "type": "background",
+      "layout": {"visibility": "visible"},
       "paint": {"background-color": "rgba(0, 0, 0, 1)"}
     },
     {
@@ -141,44 +142,206 @@
       "paint": {"circle-color": "rgba(226, 226, 226, 1)", "circle-radius": 2}
     },
     {
-      "id": "hnr_match_18",
+      "id": "point_far_14",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_far",
+      "minzoom": 14,
+      "maxzoom": 15,
+      "layout": {"visibility": "visible"},
+      "paint": {"circle-color": "#2c7fb8", "circle-radius": 2}
+    },
+    {
+      "id": "point_missing_14",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_missing",
+      "minzoom": 14,
+      "maxzoom": 15,
+      "layout": {"visibility": "visible"},
+      "paint": {"circle-color": "rgba(218, 64, 150, 1)", "circle-radius": 2}
+    },
+    {
+      "id": "point_match_15",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_match",
+      "minzoom": 15,
+      "maxzoom": 16,
+      "layout": {"visibility": "visible"},
+      "paint": {"circle-color": "rgba(226, 226, 226, 1)", "circle-radius": 3}
+    },
+    {
+      "id": "point_far_15",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_far",
+      "minzoom": 15,
+      "maxzoom": 16,
+      "layout": {"visibility": "visible"},
+      "paint": {"circle-color": "#2c7fb8", "circle-radius": 3}
+    },
+    {
+      "id": "point_missing_15",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_missing",
+      "minzoom": 15,
+      "maxzoom": 16,
+      "layout": {"visibility": "visible"},
+      "paint": {"circle-color": "rgba(218, 64, 150, 1)", "circle-radius": 3}
+    },
+    {
+      "id": "hnr_match_16",
       "type": "symbol",
       "source": "geoadr",
-      "source-layer": "public.geoadr_matches",
-      "minzoom": 18,
-      "maxzoom": 20,
-      "filter": ["==", "has_match", true],
+      "source-layer": "geoadr_point_match",
+      "minzoom": 16,
+      "maxzoom": 17,
       "layout": {
         "text-field": "{hnradz}",
         "text-font": ["Roboto Condensed Regular"],
         "text-allow-overlap": true,
-        "visibility": "none"
+        "visibility": "visible",
+        "text-size": 12
       },
-      "paint": {
-        "text-color": [
-          "interpolate",
-          ["linear"],
-          ["number", ["get", "distance"]],
-          0,
-          "#ffffcc",
-          50,
-          "#a1dab4",
-          100,
-          "#41b6c4",
-          150,
-          "#2c7fb8",
-          250,
-          "#253494"
-        ]
-      }
+      "paint": {"text-color": "rgba(255, 255, 255, 1)"}
+    },
+    {
+      "id": "hnr_far_16",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_far",
+      "minzoom": 16,
+      "maxzoom": 17,
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-allow-overlap": true,
+        "visibility": "visible",
+        "text-size": 12
+      },
+      "paint": {"text-color": "#2c7fb8"}
+    },
+    {
+      "id": "hnr_missing_16",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_missing",
+      "minzoom": 16,
+      "maxzoom": 17,
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-allow-overlap": true,
+        "visibility": "visible",
+        "text-size": 12,
+        "icon-text-fit": "none"
+      },
+      "paint": {"text-color": "rgba(218, 64, 150, 1)"}
+    },
+    {
+      "id": "hnr_match_17",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_match",
+      "minzoom": 17,
+      "maxzoom": 18,
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-allow-overlap": true,
+        "visibility": "visible",
+        "text-size": 14
+      },
+      "paint": {"text-color": "rgba(255, 255, 255, 1)"}
+    },
+    {
+      "id": "hnr_far_17",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_far",
+      "minzoom": 17,
+      "maxzoom": 18,
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-allow-overlap": true,
+        "visibility": "visible",
+        "text-size": 14
+      },
+      "paint": {"text-color": "#2c7fb8"}
+    },
+    {
+      "id": "hnr_missing_17",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_missing",
+      "minzoom": 17,
+      "maxzoom": 18,
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-allow-overlap": true,
+        "visibility": "visible",
+        "text-size": 14,
+        "icon-text-fit": "none"
+      },
+      "paint": {"text-color": "rgba(218, 64, 150, 1)"}
+    },
+    {
+      "id": "hnr_match_18",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_match",
+      "minzoom": 18,
+      "maxzoom": 20,
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-allow-overlap": true,
+        "visibility": "visible"
+      },
+      "paint": {"text-color": "rgba(255, 255, 255, 1)"}
+    },
+    {
+      "id": "hnr_far_18",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_far",
+      "minzoom": 18,
+      "maxzoom": 20,
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-allow-overlap": true,
+        "visibility": "visible"
+      },
+      "paint": {"text-color": "#2c7fb8"}
+    },
+    {
+      "id": "hnr_missing_18",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "geoadr_point_missing",
+      "minzoom": 18,
+      "maxzoom": 20,
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Roboto Condensed Regular"],
+        "text-allow-overlap": true,
+        "visibility": "visible",
+        "text-size": 16,
+        "icon-text-fit": "none"
+      },
+      "paint": {"text-color": "rgba(218, 64, 150, 1)"}
     },
     {
       "id": "hnr_match_20+",
       "type": "symbol",
       "source": "geoadr",
-      "source-layer": "public.geoadr_matches",
+      "source-layer": "geoadr_point_match",
       "minzoom": 20,
-      "filter": ["==", "has_match", true],
       "layout": {
         "text-field": "{hnradz}, {stn}, {plz} {ottname}, {gmdname}",
         "text-font": ["Roboto Condensed Regular"],
@@ -186,56 +349,40 @@
         "text-anchor": "left",
         "icon-text-fit": "none",
         "text-allow-overlap": true,
-        "visibility": "none"
+        "visibility": "visible"
       },
-      "paint": {
-        "text-color": [
-          "interpolate",
-          ["linear"],
-          ["number", ["get", "distance"]],
-          0,
-          "#ffffcc",
-          50,
-          "#a1dab4",
-          100,
-          "#41b6c4",
-          150,
-          "#2c7fb8",
-          250,
-          "#253494"
-        ]
-      }
+      "paint": {"text-color": "rgba(255, 255, 255, 1)"}
     },
     {
-      "id": "hnr_missing_18",
+      "id": "hnr_far_20+",
       "type": "symbol",
       "source": "geoadr",
-      "source-layer": "public.geoadr_matches",
-      "minzoom": 18,
-      "maxzoom": 20,
-      "filter": ["==", "has_match", false],
+      "source-layer": "geoadr_point_far",
+      "minzoom": 20,
       "layout": {
-        "text-field": "{hnradz}",
+        "text-field": "{hnradz}, {stn}, {plz} {ottname}, {gmdname}",
         "text-font": ["Roboto Condensed Regular"],
+        "text-justify": "left",
+        "text-anchor": "left",
+        "icon-text-fit": "none",
         "text-allow-overlap": true,
-        "visibility": "none"
+        "visibility": "visible"
       },
-      "paint": {"text-color": "rgba(218, 64, 150, 1)"}
+      "paint": {"text-color": "#2c7fb8"}
     },
     {
       "id": "hnr_missing_20+",
       "type": "symbol",
       "source": "geoadr",
-      "source-layer": "public.geoadr_matches",
+      "source-layer": "geoadr_point_missing",
       "minzoom": 20,
-      "filter": ["==", "has_match", false],
       "layout": {
         "text-field": "{hnradz}, {stn}, {plz} {ottname}, {gmdname}",
         "text-font": ["Roboto Condensed Regular"],
         "text-justify": "left",
         "text-anchor": "left",
         "text-allow-overlap": true,
-        "visibility": "none"
+        "visibility": "visible"
       },
       "paint": {"text-color": "rgba(218, 64, 150, 1)"}
     }
