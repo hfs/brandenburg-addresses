@@ -7,4 +7,4 @@ export PGUSER=postgres
 export PGPASSWORD=postgres
 export PGDATABASE=addresses
 # Memory in MB for osm2pgsql
-MEMORY=4000
+export MEMORY=4000
