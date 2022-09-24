@@ -7,6 +7,7 @@ CREATE TABLE osm_address AS (
         -- Standardize house number suffixes like "1 A"
         REPLACE(LOWER(housenumber), ' ', '') AS housenumber,
         street, suburb, postcode, city,
+        geom,
         ST_Transform(p.geom, 32633) AS geom_32633
     FROM address_point p
     UNION ALL
@@ -54,7 +55,7 @@ CREATE TABLE geoadr_aggregation AS
         10 AS resolution,
         COUNT(has_match) FILTER (WHERE has_match) AS match,
         COUNT(has_match) FILTER (WHERE NOT has_match) AS missing,
-        h3_to_geo_boundary_geometry(h3_10) AS geom
+        ST_ForcePolygonCW(h3_to_geo_boundary_geometry(h3_10)) AS geom
     FROM
         geoadr_matches g
     GROUP BY
@@ -69,7 +70,7 @@ $func$
         res AS resolution,
         SUM(match) AS "match",
         SUM(missing) AS missing,
-        h3_to_geo_boundary_geometry(h3_to_parent(h3_id, res)) AS geom
+        ST_ForcePolygonCW(h3_to_geo_boundary_geometry(h3_to_parent(h3_id, res))) AS geom
     FROM geoadr_aggregation
     WHERE resolution = 10
     GROUP BY
@@ -110,8 +111,8 @@ FROM
         SELECT
             -- The kmeans function adds a cluster ID to every row
             kmeans(
-                ARRAY[missing], -- which attributes too use for the clustering
-                8, -- Number of desired classes. One more class for 0 is added below
+                ARRAY[missing], -- which attributes to use for the clustering
+                8, -- Number of desired classes. One more hardcoded class for missing==0 is added below
                 CASE
                     WHEN res = 10 THEN
                         -- Using the percentiles doesn't work well for resolution 10, because it has too many "1".
@@ -150,7 +151,7 @@ FROM
 
 
 -- Function to serve geoadr_aggregate as MVTs based on the requested zoom z.
--- The tile contains one layer for each color interval.
+-- The tile contains one "cluster" for each color interval.
 CREATE OR REPLACE
 FUNCTION public.geoadr_overview(z integer, x integer, y integer)
 RETURNS bytea
@@ -165,28 +166,24 @@ AS $func$
             ELSE z
           END AS resolution
     )
-    SELECT STRING_AGG(mvt, '')
+    SELECT ST_AsMVT(mvtgeom) AS mvt
     FROM (
-        SELECT ST_AsMVT(mvtgeom, 'geoadr_overview_interval' || "cluster") AS mvt
-        FROM (
-            SELECT
-                ST_AsMVTGeom(ST_Transform(g.geom, 3857), args.bounds) AS geom,
-                g."match",
-                g.missing,
-                b."cluster"
-            FROM
-                geoadr_aggregation g,
-                args,
-                breakpoints b
-            WHERE
-                ST_Intersects(g.geom, ST_Transform(args.bounds, 4326)) AND
-                args.resolution = g.resolution AND
-                args.resolution = b.resolution AND
-                g.missing >= b.bound_lower AND
-                g.missing <= b.bound_upper
-        ) mvtgeom
-        GROUP BY "cluster"
-    ) mvt_per_layer
+        SELECT
+            ST_AsMVTGeom(ST_Transform(g.geom, 3857), args.bounds) AS geom,
+            g."match",
+            g.missing,
+            b."cluster"
+        FROM
+            geoadr_aggregation g,
+            args,
+            breakpoints b
+        WHERE
+            ST_Intersects(g.geom, ST_Transform(args.bounds, 4326)) AND
+            args.resolution = g.resolution AND
+            args.resolution = b.resolution AND
+            g.missing >= b.bound_lower AND
+            g.missing <= b.bound_upper
+    ) mvtgeom
 $func$
 LANGUAGE 'sql'
 STABLE
@@ -206,32 +203,21 @@ AS $func$
       SELECT
         ST_TileEnvelope(z, x, y) AS bounds
     )
-    SELECT STRING_AGG(mvt, '')
+    SELECT ST_AsMVT(mvtgeom) AS mvt
     FROM (
-        SELECT ST_AsMVT(
-                mvtgeom,
-                CASE
-                    WHEN category = 0 THEN 'geoadr_point_match'
-                    WHEN category = 1 THEN 'geoadr_point_far'
-                    WHEN category = 2 THEN 'geoadr_point_missing'
-                END
-            ) AS mvt
-        FROM (
-            SELECT
-                ST_AsMVTGeom(ST_Transform(m.geom, 3857), args.bounds) AS geom,
-                CASE
-                    WHEN has_match AND distance <= 75 THEN 0
-                    WHEN has_match AND distance > 75 THEN 1
-                    WHEN NOT has_match THEN 2
-                END AS category
-            FROM
-                geoadr_matches m,
-                args
-            WHERE
-                ST_Intersects(m.geom, ST_Transform(args.bounds, 32633))
-        ) mvtgeom
-        GROUP BY category
-    ) mvt_per_layer
+        SELECT
+            ST_AsMVTGeom(ST_Transform(m.geom, 3857), args.bounds) AS geom,
+            CASE
+                WHEN has_match AND distance <= 75 THEN 0
+                WHEN has_match AND distance > 75 THEN 1
+                WHEN NOT has_match THEN 2
+            END AS category
+        FROM
+            geoadr_matches m,
+            args
+        WHERE
+            ST_Intersects(m.geom, ST_Transform(args.bounds, 32633))
+    ) mvtgeom
 $func$
 LANGUAGE 'sql'
 STABLE
@@ -247,38 +233,27 @@ AS $func$
       SELECT
         ST_TileEnvelope(z, x, y) AS bounds
     )
-    SELECT STRING_AGG(mvt, '')
+    SELECT ST_AsMVT(mvtgeom) AS mvt
     FROM (
-        SELECT ST_AsMVT(
-                mvtgeom,
-                CASE
-                    WHEN category = 0 THEN 'geoadr_point_match'
-                    WHEN category = 1 THEN 'geoadr_point_far'
-                    WHEN category = 2 THEN 'geoadr_point_missing'
-                END
-            ) AS mvt
-        FROM (
-            SELECT
-                id,
-                stn,
-                hnradz,
-                gmdname,
-                ottname,
-                plz,
-                ST_AsMVTGeom(ST_Transform(m.geom, 3857), args.bounds) AS geom,
-                CASE
-                    WHEN has_match AND distance <= 75 THEN 0
-                    WHEN has_match AND distance > 75 THEN 1
-                    WHEN NOT has_match THEN 2
-                END AS category
-            FROM
-                geoadr_matches m,
-                args
-            WHERE
-                ST_Intersects(m.geom, ST_Transform(args.bounds, 32633))
-        ) mvtgeom
-        GROUP BY category
-    ) mvt_per_layer
+        SELECT
+            id,
+            stn,
+            hnradz,
+            gmdname,
+            ottname,
+            plz,
+            ST_AsMVTGeom(ST_Transform(m.geom, 3857), args.bounds) AS geom,
+            CASE
+                WHEN has_match AND distance <= 75 THEN 0
+                WHEN has_match AND distance > 75 THEN 1
+                WHEN NOT has_match THEN 2
+            END AS category
+        FROM
+            geoadr_matches m,
+            args
+        WHERE
+            ST_Intersects(m.geom, ST_Transform(args.bounds, 32633))
+    ) mvtgeom
 $func$
 LANGUAGE 'sql'
 STABLE
