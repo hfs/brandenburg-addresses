@@ -97,6 +97,7 @@ CREATE INDEX ON geoadr_aggregation USING GIST(geom);
 -- available for PostgreSQL
 DROP TABLE IF EXISTS breakpoints;
 CREATE TABLE breakpoints AS
+
 SELECT
     "cluster" + 1 AS "cluster",
     resolution,
@@ -114,20 +115,20 @@ FROM
                 ARRAY[missing], -- which attributes to use for the clustering
                 8, -- Number of desired classes. One more hardcoded class for missing==0 is added below
                 CASE
-                    WHEN res = 10 THEN
-                        -- Using the percentiles doesn't work well for resolution 10, because it has too many "1".
+                    WHEN res >= 7 THEN
+                        -- Using the percentiles doesn't work well for higher resolutions, because it has too many "1".
                         -- k-means then delivers too few classes.
                         -- Just use the linearly spaced values in this case.
                         ARRAY(SELECT generate_series(
                             (SELECT MIN(missing) FROM geoadr_aggregation WHERE resolution = res AND missing > 0),
                             (SELECT MAX(missing) FROM geoadr_aggregation WHERE resolution = res AND missing > 0),
-                            8
+                            (SELECT (MAX(missing) - MIN(missing)) / 7 AS step FROM geoadr_aggregation WHERE resolution = res AND missing > 0)
                         ))
                     ELSE
                         -- Evenly spaced percentiles 0/7, 1/7, ...
                         (
                             SELECT
-                                percentile_cont(ARRAY(SELECT generate_series(0.0, 1.0, 1.0/7)))
+                                percentile_disc(ARRAY(SELECT generate_series(0.0, 1.0, 1.0/7)))
                                 WITHIN GROUP (ORDER BY missing)
                             FROM geoadr_aggregation
                             WHERE resolution = res AND missing > 0
@@ -161,9 +162,9 @@ AS $func$
       SELECT
         ST_TileEnvelope(z, x, y) AS bounds,
           CASE
-            WHEN z <= 5 THEN 5
-            WHEN z >= 10 THEN 10
-            ELSE z
+            WHEN z <= 6 THEN 5
+            WHEN z >= 11 THEN 10
+            ELSE z - 1
           END AS resolution
     )
     SELECT ST_AsMVT(mvtgeom) AS mvt
@@ -237,11 +238,8 @@ AS $func$
     FROM (
         SELECT
             id,
-            stn,
             hnradz,
-            gmdname,
-            ottname,
-            plz,
+            stn || ' ' || hnradz || ', ' || plz || ' ' || ottname || ', ' || gmdname AS address,
             ST_AsMVTGeom(ST_Transform(m.geom, 3857), args.bounds) AS geom,
             CASE
                 WHEN has_match AND distance <= 75 THEN 0

@@ -45,6 +45,6 @@ export_tiles() {
 # in a single directory
 echo ">>> Delete old 'tiles' directory"
 rm -rf tiles
-export_tiles geoadr_overview 0 12 geoadr_aggregation
-export_tiles geoadr_point 13 13 geoadr_matches
-export_tiles geoadr_detail 14 14 geoadr_matches
+export_tiles geoadr_overview 0 13 geoadr_aggregation
+export_tiles geoadr_point 14 14 geoadr_matches
+export_tiles geoadr_detail 15 15 geoadr_matches
