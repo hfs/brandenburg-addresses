@@ -219,7 +219,7 @@
       "filter": ["==", "category", 0],
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 12
@@ -236,7 +236,7 @@
       "filter": ["==", "category", 1],
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 12
@@ -253,7 +253,7 @@
       "filter": ["==", "category", 2],
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 12,
@@ -271,7 +271,7 @@
       "filter": ["==", "category", 0],
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 14
@@ -288,7 +288,7 @@
       "filter": ["==", "category", 1],
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 14
@@ -305,7 +305,7 @@
       "filter": ["==", "category", 2],
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 14,
@@ -323,7 +323,7 @@
       "filter": ["==", "category", 0],
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-allow-overlap": true,
         "visibility": "visible"
       },
@@ -339,7 +339,7 @@
       "filter": ["==", "category", 1],
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-allow-overlap": true,
         "visibility": "visible"
       },
@@ -355,7 +355,7 @@
       "filter": ["==", "category", 2],
       "layout": {
         "text-field": "{hnradz}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-allow-overlap": true,
         "visibility": "visible",
         "text-size": 16,
@@ -372,7 +372,7 @@
       "filter": ["==", "category", 0],
       "layout": {
         "text-field": "{address}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-justify": "left",
         "text-anchor": "left",
         "icon-text-fit": "none",
@@ -390,7 +390,7 @@
       "filter": ["==", "category", 1],
       "layout": {
         "text-field": "{address}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-justify": "left",
         "text-anchor": "left",
         "icon-text-fit": "none",
@@ -408,7 +408,7 @@
       "filter": ["==", "category", 2],
       "layout": {
         "text-field": "{address}",
-        "text-font": ["Droid Sans"],
+        "text-font": ["Open Sans Regular"],
         "text-justify": "left",
         "text-anchor": "left",
         "text-allow-overlap": true,
