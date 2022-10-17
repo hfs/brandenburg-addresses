@@ -9,8 +9,8 @@ OSM_DATE=$(date -d @$(stat --format %Y data/$REGION-latest.osm.pbf) +%Y-%m-%dT%H
 TILES_DATE=$(date -d @$(stat --format %Y tiles/) +%Y-%m-%dT%H:%M:%S)
 
 [ -d ../brandenburg_addresses_site/tiles/ ]
-rm -rf ../brandenburg_addresses_site/tiles/
-cp -a _config.yml index.md *style.json tiles/ ../brandenburg_addresses_site/
+rm -rf ../brandenburg_addresses_site/*
+cp -a tiles/ site/* style.json mapbox-gl-style.json ../brandenburg_addresses_site/
 cd ../brandenburg_addresses_site/
 git add -u .
 git add .

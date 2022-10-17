@@ -1,0 +1,14 @@
+<script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+<link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+
+<div class="map-container"><div id="map"></div><div id="comment"><div id="comment-content">Zoom in to discover more details</div></div></div>
+<script>
+var map = new maplibregl.Map({
+  container: 'map',
+  style: 'https://hfs.github.io/brandenburg-addresses/mapbox-gl-style.json',
+  center: [13.436, 52.454],
+  zoom: 6
+});
+map.addControl(new maplibregl.NavigationControl());
+map.addControl(new maplibregl.FullscreenControl());
+</script>
