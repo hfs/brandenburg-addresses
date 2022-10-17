@@ -10,7 +10,7 @@ TILES_DATE=$(date -d @$(stat --format %Y tiles/) +%Y-%m-%dT%H:%M:%S)
 
 [ -d ../brandenburg_addresses_site/tiles/ ]
 rm -rf ../brandenburg_addresses_site/*
-cp -a tiles/ site/* style.json mapbox-gl-style.json ../brandenburg_addresses_site/
+cp -a --reflink=auto tiles/ site/* style.json mapbox-gl-style.json ../brandenburg_addresses_site/
 cd ../brandenburg_addresses_site/
 git add -u .
 git add .
