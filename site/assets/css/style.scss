@@ -47,3 +47,7 @@
     border-top: inherit;
     border-left: inherit;
 }
+
+#map .mapboxgl-ctrl-attrib {
+    background-color: hsla(0, 0%, 100%, 0.8);
+}
