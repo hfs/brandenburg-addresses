@@ -1,5 +1,6 @@
 {
   "version": 8,
+  "id": "brandenburg-address-points-v1",
   "name": "Brandenburg Address Points",
   "metadata": {"maputnik:renderer": "mbgljs"},
   "sources": {
@@ -7,7 +8,8 @@
       "type": "vector",
       "tiles": ["https://hfs.github.io/brandenburg-addresses/tiles/{z}/{x}/{y}.mvt"],
       "minzoom": 0,
-      "maxzoom": 15
+      "maxzoom": 15,
+      "attribution": "© GeoBasis-DE/LGB (2022) <a href=\"https://geobasis-bb.de/lgb/de/geodaten/liegenschaftskataster/georeferenzierte-adresse/\">Georeferenzierte Adresse</a> <a href=\"https://www.govdata.de/dl-de/by-2-0\">dl-de/by-2-0</a>, <a href=\"https://www.openstreetmap.org/copyright/\">© OpenStreetMap contributors</a>"
     }
   },
   "sprite": "",
@@ -416,6 +418,5 @@
       },
       "paint": {"text-color": "#DA4096", "text-halo-width": 0}
     }
-  ],
-  "id": "brandenburg-address-points-v1"
+  ]
 }
