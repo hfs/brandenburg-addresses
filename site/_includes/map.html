@@ -7,7 +7,8 @@ var map = new maplibregl.Map({
   container: 'map',
   style: 'https://hfs.github.io/brandenburg-addresses/mapbox-gl-style.json',
   center: [13.436, 52.454],
-  zoom: 6
+  zoom: 6,
+  maxbounds: [ [51.2, 11.1], [53.7, 15.0] ]
 });
 map.addControl(new maplibregl.NavigationControl());
 map.addControl(new maplibregl.FullscreenControl());
