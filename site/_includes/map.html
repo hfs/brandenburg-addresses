@@ -3,13 +3,38 @@
 
 <div class="map-container"><div id="map"></div><div id="comment"><div id="comment-content">Zoom in to discover more details</div></div></div>
 <script>
+var currentZoom = 6;
+var helpMinZoom = -1;
+var helpMaxZoom = -1;
 var map = new maplibregl.Map({
   container: 'map',
   style: 'https://hfs.github.io/brandenburg-addresses/mapbox-gl-style.json',
   center: [13.436, 52.454],
-  zoom: 6,
+  zoom: currentZoom,
   maxbounds: [ [51.2, 11.1], [53.7, 15.0] ]
 });
 map.addControl(new maplibregl.NavigationControl());
 map.addControl(new maplibregl.FullscreenControl());
+
+function matchZoom(currentZoom) {
+    for (const helpEntry of helpTexts) {
+        if (currentZoom >= helpEntry[0] && currentZoom < helpEntry[1]) {
+            return helpEntry;
+        }
+    }
+}
+
+function zoomHandler() {
+    var currentZoom = map.getZoom();
+    const helpEntry = matchZoom(currentZoom);
+    if (helpEntry) {
+        helpMinZoom = helpEntry[0];
+        helpMaxZoom = helpEntry[1];
+        document.getElementById('comment-content').innerHTML = helpEntry[2];
+    }
+}
+
+map.on('load', zoomHandler)
+map.on('zoomend', zoomHandler)
+
 </script>

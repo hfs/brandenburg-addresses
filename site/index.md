@@ -11,6 +11,7 @@ description: >-
 
 ## Vorschau
 
+{% include help_de.html %}
 {% include map.html %}
 
 
