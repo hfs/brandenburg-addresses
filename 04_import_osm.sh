@@ -4,7 +4,7 @@ source env.sh
 
 if [ data/$REGION-latest.osm.pbf -nt data/$REGION-filtered.osm.pbf ]; then
     echo ">>> Filter OSM data"
-    osmium tags-filter data/$REGION-latest.osm.pbf 'addr:*' -o data/$REGION-filtered.osm.pbf
+    osmium tags-filter --overwrite data/$REGION-latest.osm.pbf 'addr:*' -o data/$REGION-filtered.osm.pbf
 fi
 echo ">>> Import filtered OSM data into PostGIS database"
 osm2pgsql --create --slim --cache $MEMORY --number-processes 8 \
