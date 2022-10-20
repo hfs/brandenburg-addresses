@@ -2,7 +2,7 @@
 title: Addresses in Brandenburg
 ---
 
-## *[🇩🇪 auf Deutsch](/)*
+## *[🇩🇪 auf Deutsch](/brandenburg-addresses/)*
 
 ## Preview
 
