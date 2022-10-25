@@ -27,7 +27,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 0,
-      "maxzoom": 13,
+      "maxzoom": 14,
       "filter": ["==", "cluster", 0],
       "paint": {"fill-color": "#ffffb2"}
     },
@@ -37,7 +37,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 0,
-      "maxzoom": 13,
+      "maxzoom": 14,
       "filter": ["==", "cluster", 1],
       "paint": {"fill-color": "#ffe687"}
     },
@@ -47,7 +47,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 0,
-      "maxzoom": 13,
+      "maxzoom": 14,
       "filter": ["==", "cluster", 2],
       "paint": {"fill-color": "#fecc5c"}
     },
@@ -57,7 +57,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 0,
-      "maxzoom": 13,
+      "maxzoom": 14,
       "filter": ["==", "cluster", 3],
       "paint": {"fill-color": "#fead4c"}
     },
@@ -67,7 +67,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 0,
-      "maxzoom": 13,
+      "maxzoom": 14,
       "filter": ["==", "cluster", 4],
       "paint": {"fill-color": "#fd8d3c"}
     },
@@ -77,7 +77,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 0,
-      "maxzoom": 13,
+      "maxzoom": 14,
       "filter": ["==", "cluster", 5],
       "paint": {"fill-color": "#fd8d3c"}
     },
@@ -87,7 +87,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 0,
-      "maxzoom": 13,
+      "maxzoom": 14,
       "filter": ["==", "cluster", 6],
       "paint": {"fill-color": "#f03b20"}
     },
@@ -97,7 +97,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 0,
-      "maxzoom": 13,
+      "maxzoom": 14,
       "filter": ["==", "cluster", 7],
       "paint": {"fill-color": "#d71e23"}
     },
@@ -107,7 +107,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 0,
-      "maxzoom": 13,
+      "maxzoom": 14,
       "filter": ["==", "cluster", 8],
       "layout": {"visibility": "visible"},
       "paint": {"fill-color": "#d71e23"}
@@ -118,7 +118,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 14,
-      "maxzoom": 14,
+      "maxzoom": 15,
       "filter": ["==", "category", 0],
       "layout": {"visibility": "visible"},
       "paint": {"circle-color": "#E2E2E2", "circle-radius": 1}
@@ -129,7 +129,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 14,
-      "maxzoom": 14,
+      "maxzoom": 15,
       "filter": ["==", "category", 1],
       "layout": {"visibility": "visible"},
       "paint": {"circle-color": "#2c7fb8", "circle-radius": 1}
@@ -140,7 +140,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 14,
-      "maxzoom": 14,
+      "maxzoom": 15,
       "filter": ["==", "category", 2],
       "layout": {"visibility": "visible"},
       "paint": {"circle-color": "#DA4096", "circle-radius": 1}
@@ -151,7 +151,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 15,
-      "maxzoom": 15,
+      "maxzoom": 16,
       "filter": ["==", "category", 0],
       "layout": {"visibility": "visible"},
       "paint": {"circle-color": "#E2E2E2", "circle-radius": 2}
@@ -162,7 +162,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 15,
-      "maxzoom": 15,
+      "maxzoom": 16,
       "filter": ["==", "category", 1],
       "layout": {"visibility": "visible"},
       "paint": {"circle-color": "#2c7fb8", "circle-radius": 2}
@@ -173,7 +173,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 15,
-      "maxzoom": 15,
+      "maxzoom": 16,
       "filter": ["==", "category", 2],
       "layout": {"visibility": "visible"},
       "paint": {"circle-color": "#DA4096", "circle-radius": 2}
@@ -184,7 +184,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 16,
-      "maxzoom": 16,
+      "maxzoom": 17,
       "filter": ["==", "category", 0],
       "layout": {"visibility": "visible"},
       "paint": {"circle-color": "#E2E2E2", "circle-radius": 3}
@@ -195,7 +195,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 16,
-      "maxzoom": 16,
+      "maxzoom": 17,
       "filter": ["==", "category", 1],
       "layout": {"visibility": "visible"},
       "paint": {"circle-color": "#2c7fb8", "circle-radius": 3}
@@ -206,7 +206,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 16,
-      "maxzoom": 16,
+      "maxzoom": 17,
       "filter": ["==", "category", 2],
       "layout": {"visibility": "visible"},
       "paint": {"circle-color": "#DA4096", "circle-radius": 3}
@@ -217,7 +217,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 17,
-      "maxzoom": 17,
+      "maxzoom": 18,
       "filter": ["==", "category", 0],
       "layout": {
         "text-field": "{hnradz}",
@@ -234,7 +234,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 17,
-      "maxzoom": 17,
+      "maxzoom": 18,
       "filter": ["==", "category", 1],
       "layout": {
         "text-field": "{hnradz}",
@@ -251,7 +251,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 17,
-      "maxzoom": 17,
+      "maxzoom": 18,
       "filter": ["==", "category", 2],
       "layout": {
         "text-field": "{hnradz}",
@@ -269,7 +269,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 18,
-      "maxzoom": 18,
+      "maxzoom": 19,
       "filter": ["==", "category", 0],
       "layout": {
         "text-field": "{hnradz}",
@@ -286,7 +286,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 18,
-      "maxzoom": 18,
+      "maxzoom": 19,
       "filter": ["==", "category", 1],
       "layout": {
         "text-field": "{hnradz}",
@@ -303,7 +303,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 18,
-      "maxzoom": 18,
+      "maxzoom": 19,
       "filter": ["==", "category", 2],
       "layout": {
         "text-field": "{hnradz}",
@@ -321,7 +321,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 19,
-      "maxzoom": 19,
+      "maxzoom": 20,
       "filter": ["==", "category", 0],
       "layout": {
         "text-field": "{hnradz}",
@@ -337,7 +337,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 19,
-      "maxzoom": 19,
+      "maxzoom": 20,
       "filter": ["==", "category", 1],
       "layout": {
         "text-field": "{hnradz}",
@@ -353,7 +353,7 @@
       "source": "geoadr",
       "source-layer": "default",
       "minzoom": 19,
-      "maxzoom": 19,
+      "maxzoom": 20,
       "filter": ["==", "category", 2],
       "layout": {
         "text-field": "{hnradz}",
