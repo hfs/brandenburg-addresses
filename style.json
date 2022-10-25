@@ -9,7 +9,7 @@
       "tiles": ["https://hfs.github.io/brandenburg-addresses/tiles/{z}/{x}/{y}.mvt"],
       "minzoom": 0,
       "maxzoom": 15,
-      "attribution": "© GeoBasis-DE/LGB (2022) <a href=\"https://geobasis-bb.de/lgb/de/geodaten/liegenschaftskataster/georeferenzierte-adresse/\">Georeferenzierte Adresse</a> <a href=\"https://www.govdata.de/dl-de/by-2-0\">dl-de/by-2-0</a>, <a href=\"https://www.openstreetmap.org/copyright/\">© OpenStreetMap contributors</a>"
+      "attribution": "© GeoBasis-DE/LGB (2022): Georeferenzierte Adresse, dl-de/by-2-0"
     }
   },
   "sprite": "",
