@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-11-01T00:00:00Z"
+  labels:
+    app: brandenburg-addresses
+  name: brandenburg-addresses
+spec:
+  containers:
+  - name: brandenburg-addresses-postgres
+    image: brandenburg_addresses_postgres:latest
+    args:
+    - postgres
+    securityContext:
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /var/lib/postgresql/data
+      name: postgresql-data
+  - name: brandenburg-addresses-run
+    image: brandenburg_addresses:latest
+    command:
+    - ./run.sh
+    securityContext:
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /app
+      name: app
+  volumes:
+  - hostPath:
+      path: ./data/postgres
+      type: Directory
+    name: postgresql-data
+  - hostPath:
+      path: .
+      type: Directory
+    name: app
+  restartPolicy: Never

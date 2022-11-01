@@ -1,7 +1,7 @@
 export REGION=brandenburg
 export REGION_PATH=europe/germany/$REGION
 
-export PGHOST=postgres
+export PGHOST=localhost
 export PGPORT=5432
 export PGUSER=postgres
 export PGPASSWORD=postgres
