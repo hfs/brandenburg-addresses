@@ -39,7 +39,7 @@ CREATE TABLE geoadr_matches AS
         g.aud,    
         o.osm_id IS NOT NULL AS has_match,
         ST_Distance(o.geom_32633, g.geom) AS distance,
-        h3_geo_to_h3(ST_Transform(g.geom, 4326), 10) AS h3_10
+        h3_lat_lng_to_cell(point(ST_Transform(g.geom, 4326)), 10) AS h3_10
     FROM geoadr g LEFT JOIN osm_address o
     ON
         g.stn = o.street AND 
@@ -55,7 +55,7 @@ CREATE TABLE geoadr_aggregation AS
         10 AS resolution,
         COUNT(has_match) FILTER (WHERE has_match) AS match,
         COUNT(has_match) FILTER (WHERE NOT has_match) AS missing,
-        ST_ForcePolygonCW(h3_to_geo_boundary_geometry(h3_10)) AS geom
+        ST_ForcePolygonCW(ST_GeomFromEWKB(h3_cell_to_boundary_wkb(h3_10))) AS geom
     FROM
         geoadr_matches g
     GROUP BY
@@ -66,15 +66,15 @@ CREATE OR REPLACE FUNCTION geoadr_aggregate(res int)
   RETURNS TABLE (h3_id h3index, resolution int, "match" int, missing int, geom geometry) AS
 $func$
     SELECT
-        h3_to_parent(h3_id, res) AS h3_id,
+        h3_cell_to_parent(h3_id, res) AS h3_id,
         res AS resolution,
         SUM(match) AS "match",
         SUM(missing) AS missing,
-        ST_ForcePolygonCW(h3_to_geo_boundary_geometry(h3_to_parent(h3_id, res))) AS geom
+        ST_ForcePolygonCW(ST_GeomFromEWKB(h3_cell_to_boundary_wkb(h3_cell_to_parent(h3_id, res)))) AS geom
     FROM geoadr_aggregation
     WHERE resolution = 10
     GROUP BY
-        h3_to_parent(h3_id, res)
+        h3_cell_to_parent(h3_id, res)
 $func$ LANGUAGE sql;
 ;
 INSERT INTO geoadr_aggregation
