@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  addresses:
+    build: .
+    volumes:
+      - .:/app
+    entrypoint: ./run.sh
+  postgres:
+    build:
+      context: images
+      dockerfile: postgres.dockerfile
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
