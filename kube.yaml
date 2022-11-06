@@ -7,7 +7,7 @@ metadata:
   name: brandenburg-addresses
 spec:
   containers:
-  - name: brandenburg-addresses-postgres
+  - name: postgres
     image: brandenburg_addresses_postgres:latest
     args:
     - postgres
@@ -20,7 +20,7 @@ spec:
     volumeMounts:
     - mountPath: /var/lib/postgresql/data
       name: postgresql-data
-  - name: brandenburg-addresses-run
+  - name: run
     image: brandenburg_addresses:latest
     command:
     - ./run.sh
