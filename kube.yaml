@@ -11,6 +11,9 @@ spec:
     image: brandenburg_addresses_postgres:latest
     args:
     - postgres
+    env:
+      - name: POSTGRES_PASSWORD
+        value: postgres
     securityContext:
       capabilities:
         drop:
