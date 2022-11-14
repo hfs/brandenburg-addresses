@@ -125,3 +125,11 @@ GeoBasis-DE/LGB (2022): WebAtlasDE BE/BB` hinzu. Mit den Tasten `Alt+1`,
 
 * [Hausnummernauswertung auf regio-osm.de](https://regio-osm.de/hausnummerauswertung/)
 * [Addresses with errors in OSM – Brandenburg](https://osm.zz.de/dbview/?db=addresses-bb&layer=addresserror#52.42587,13.61755,8z)
+
+
+## Letzte Änderung
+
+* Georeferenzierte Adressen: Stand $ADDRESS_DATE
+* OpenStreetMap dump: $OSM_DATE
+* OpenStreetMap letzte Änderung von: $CHANGE_DATE
+* Daten generiert: $TILES_DATE

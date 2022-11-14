@@ -13,3 +13,6 @@ fi
 echo ">>> Downloading OpenStreetMap dump for '$REGION_PATH'"
 wget "https://download.geofabrik.de/$REGION_PATH-latest.osm.pbf" \
     --timestamping
+wget --quiet 'http://download.geofabrik.de/europe/germany/brandenburg-updates/state.txt' -O - |
+    sed -n 's/\\//g; s/^timestamp=//p' \
+    > timestamp.txt

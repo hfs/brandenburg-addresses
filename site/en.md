@@ -40,3 +40,11 @@ for details.
 
 * [House number analysis on regio-osm.de](https://regio-osm.de/hausnummerauswertung/)
 * [Addresses with errors in OSM – Brandenburg](https://osm.zz.de/dbview/?db=addresses-bb&layer=addresserror#52.42587,13.61755,8z)
+
+
+## Latest update
+
+* Georeferenzierte Adressen: $ADDRESS_DATE
+* OpenStreetMap dump: $OSM_DATE
+* OpenStreetMap last change from: $CHANGE_DATE
+* Data generated: $TILES_DATE
