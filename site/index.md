@@ -96,7 +96,26 @@ erfasst. Dies könnte durch je einen Knoten pro Hausnummer ersetzt werden.
 ![Bildschirmfoto aus dem JOSM-Editor mit 4 Wohnblocks und als fehlend markierten Hausnummern](/brandenburg-addresses/assets/images/apartments.jpg)
 
 
+## Einbinden der Daten in JOSM
+
+Die Daten werden als Vektordaten-Layer bereitgestellt. Sie müssen einmalig als Hintergrundbild eingerichtet werden:
+
+* *Einstellungen* (F12) › *Hintergrundbild* › *Hintergrundanbieter*.
+* Neben der unteren Liste *Gewählte Einträge* drücke den Knopf *+ MVT*.
+* 2. URL = `https://hfs.github.io/brandenburg-addresses/style.json`
+* 5. Name für diese Ebene eingeben = `Brandenburg GeoBasis-DE/LGB (2022):
+  Georeferenzierte Adresse`. Wenn man genau diesen Namen verwendet, kann man
+  beim Upload von Änderungen leicht die zwingend nötige Quellenangabe im
+  `source`-Tag hinzufügen.
+
+Anschließend kann die Ebene über *Hintergrund* › *Brandenburg GeoBasis-DE/LGB
+(2022): Georeferenzierte Adresse* hinzugefügt werden.
+
+
 ## Tipps zum Bearbeiten von Adressen in JOSM
+
+
+### Vorlage benutzen
 
 Über *Vorlagen › Vorlagen suchen… › Annotation/Address* gibt es einen Dialog,
 mit dem man einfacher mehrere Adressen hinzufügen kann. Der Dialog merkt sich
@@ -108,6 +127,9 @@ die Hausnummer einzugeben.
 Mit den Schaltflächen `+1`, `+2` usw. im Dialog kann man die Hausnummern
 automatisch hochzählen lassen.
 
+
+### Tastaturkürzel
+
 Schließlich kann man noch ein Tastaturkürzel für den Adressdialog hinzufügen.
 Dazu unter *Vorlagen › Vorlagen suchen… ›* Rechtsklick auf *Annotation/Address
 › Schaltfläche in Werkzeugleiste hinzufügen*. Es erscheint ein Knopf mit
@@ -115,14 +137,28 @@ Hausnummer-Icon in der Toolbar. Dort wiederum kann man mit der rechten
 Maustaste draufklicken › *Tastenkürzel bearbeiten*. Es öffnet sich der
 Einstellungs-Dialog, wo man ein Tastenkürzel auswählen kann.
 
+
+### Hintergrund-Ebenen
+
 Am besten fügt man zusätzlich zur Adress-Ebene noch das Luftbild `Brandenburg
 GeoBasis-DE/LGB (2022): DOP20c` und die „offizielle“ Karte `Brandenburg
 GeoBasis-DE/LGB (2022): WebAtlasDE BE/BB` hinzu. Mit den Tasten `Alt+1`,
 `Alt+2` usw. kann man schnell Ebenen ein- und ausblenden.
 
 
+### Kartenstil für Adressen
+
+Nach dem Hinzufügen von Adressen kann der Kartenstil
+[Coloured Streets](https://josm.openstreetmap.de/wiki/Styles/Coloured_Streets)
+bei der Qualitätskontrolle helfen. Z.B. sieht man visuell die Zuordnung von
+Hausnummern zu Straßen:
+
+![Screenshot des JOSM-Editors mit aktiviertem Kartenstil “Coloured Streets”](/brandenburg-addresses/assets/images/coloured_streets.jpg)
+
+
 ## Siehe auch
 
+* [Source-Code dieses Projekts](https://github.com/hfs/brandenburg-addresses/)
 * [Hausnummernauswertung auf regio-osm.de](https://regio-osm.de/hausnummerauswertung/)
 * [Addresses with errors in OSM – Brandenburg](https://osm.zz.de/dbview/?db=addresses-bb&layer=addresserror#52.42587,13.61755,8z)
 
