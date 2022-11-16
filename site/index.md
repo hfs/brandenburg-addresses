@@ -93,7 +93,7 @@ erhalten. Im folgenden Beispiel sind die Hausnummern als Liste `1;3;5` usw.
 erfasst. Dies könnte durch je einen Knoten pro Hausnummer ersetzt werden.
 Üblicherweise werden diese dann an die Position der Eingänge gesetzt.
 
-![Bildschirmfoto aus dem JOSM-Editor mit 4 Wohnblocks und als fehlend markierten Hausnummern](/brandenburg/addresses/assets/images/apartments.jpg)
+![Bildschirmfoto aus dem JOSM-Editor mit 4 Wohnblocks und als fehlend markierten Hausnummern](/brandenburg-addresses/assets/images/apartments.jpg)
 
 
 ## Tipps zum Bearbeiten von Adressen in JOSM
