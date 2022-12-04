@@ -11,7 +11,7 @@ export TILES_DATE=$(date -d @$(stat --format %Y tiles/) +%Y-%m-%dT%H:%M:%S%z)
 
 [ -d ../brandenburg_addresses_site/tiles/ ]
 rm -rf ../brandenburg_addresses_site/*
-cp -a --reflink=auto tiles/ site/* site/.github/ style.json mapbox-gl-style.json ../brandenburg_addresses_site/
+cp -a --reflink=auto tiles/ site/* .github/ style.json mapbox-gl-style.json ../brandenburg_addresses_site/
 cat site/de/timestamp.md | envsubst > ../brandenburg_addresses_site/de/timestamp.md
 cat site/en/timestamp.md | envsubst > ../brandenburg_addresses_site/en/timestamp.md
 cd ../brandenburg_addresses_site/
