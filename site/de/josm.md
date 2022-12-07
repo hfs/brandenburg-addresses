@@ -7,7 +7,11 @@ nav_order: 3
 
 # Einbinden der Daten in JOSM
 
-Die Daten werden als Vektordaten-Layer bereitgestellt. Sie müssen einmalig als Hintergrundbild eingerichtet werden:
+Die JOSM-Version muss **18578** oder neuer sein. Eine neuere Version kann man
+ggf. auf der [JOSM-Seite](https://josm.openstreetmap.de/) herunterladen.
+
+Die Daten werden als Vektordaten-Layer bereitgestellt. Sie müssen einmalig als
+Hintergrundbild eingerichtet werden.
 
 * *Einstellungen* (F12) › *Hintergrundbild* › *Hintergrundanbieter*.
 * Neben der unteren Liste *Gewählte Einträge* drücke den Knopf *+ MVT*.
@@ -17,8 +21,10 @@ Die Daten werden als Vektordaten-Layer bereitgestellt. Sie müssen einmalig als 
   beim Upload von Änderungen leicht die zwingend nötige Quellenangabe im
   `source`-Tag hinzufügen.
 
-Anschließend kann die Ebene über *Hintergrund* › *Brandenburg GeoBasis-DE/LGB
-(2022): Georeferenzierte Adresse* hinzugefügt werden.
+![Bildschirmfoto des Dialogs zum Hinzufügen einer neuen Hintergrundebene](/brandenburg-addresses/assets/images/imagery_de.png)
+
+Anschließend kann die Ebene über das Menü *Hintergrund* › *Brandenburg
+GeoBasis-DE/LGB (2022): Georeferenzierte Adresse* hinzugefügt werden.
 
 
 
