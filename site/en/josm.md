@@ -24,4 +24,4 @@ as background imagery layer.
 ![Screenshot of the dialog to add a new imagery provider](/brandenburg-addresses/assets/images/imagery_en.png)
 
 Afterwards you can add the layer via the menu *Imagery* › *Brandenburg
-GeoBasis-DE/LGB (2022): Georeferenzierte Adresse* hinzugefügt werden.
+GeoBasis-DE/LGB (2022): Georeferenzierte Adresse*.
