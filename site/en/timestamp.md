@@ -2,7 +2,7 @@
 title: Latest update
 layout: page
 parent: Brandenburg Addresses 🇬🇧
-nav_order: 6
+nav_order: 7
 ---
 
 # Latest update
