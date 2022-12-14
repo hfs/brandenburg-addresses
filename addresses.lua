@@ -33,7 +33,9 @@ tables.address_polygon = osm2pgsql.define_table({
 
 function osm2pgsql.process_node(object)
     local housenumber  = object.tags['addr:housenumber']
-    local street = object.tags['addr:street']
+    -- See https://wiki.openstreetmap.org/wiki/Key:addr:place for addresses
+    -- that are not bound to a street, but some other locality.
+    local street = object.tags['addr:street'] or object.tags['addr:place']
     local suburb = object.tags['addr:suburb']
     local postcode = object.tags['addr:postcode']
     local city = object.tags['addr:city']
