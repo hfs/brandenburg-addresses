@@ -1,0 +1,4 @@
+#!/bin/sh
+# Run the given command, but always exit with success status 0
+"$@"
+exit 0

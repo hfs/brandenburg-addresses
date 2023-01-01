@@ -34,10 +34,14 @@ export_tiles() {
 	# Create all directories in advance
 	cut -d / -f 1-2 $tiles | sort -u | xargs -I % mkdir -p tiles/%
 
+	# Workaround for kernel panic experienced every few days: Ignore curl's exit code
 	xargs -P 6 -I % --verbose \
-		curl --silent "http://localhost:7800/public.$table/%.pbf" -o tiles/%.mvt \
-		< $tiles 2>&1 |
-		pv -l -s $(wc -l < $tiles) > /dev/null
+		./bliss curl --silent "http://localhost:7800/public.$table/%.pbf" -o tiles/%.mvt \
+		< $tiles
+	echo -n ">>> Number of tiles expected: "
+	wc -l < $tiles
+	echo -n ">>> Number of tiles generated: "
+	find tiles -name "*.mvt" | wc -l
 	rm $tiles
 }
 
