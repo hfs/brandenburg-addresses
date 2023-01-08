@@ -10,7 +10,7 @@ nav_order: 1
 This data may be used to edit OpenStreetMap. If you do so, you **must** put
 this attribution into the `source` tag of the changeset:
 
-    GeoBasis-DE/LGB (2022): Georeferenzierte Adresse
+    GeoBasis-DE/LGB (2023): Georeferenzierte Adresse
 
 Refer to
 [OSM-Wiki: Brandenburg/Geoportal](https://wiki.openstreetmap.org/wiki/Brandenburg/Geoportal)

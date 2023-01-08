@@ -16,7 +16,7 @@ Hintergrundbild eingerichtet werden.
 * *Einstellungen* (F12) › *Hintergrundbild* › *Hintergrundanbieter*.
 * Neben der unteren Liste *Gewählte Einträge* drücke den Knopf *+ MVT*.
 * 2\. URL = `https://hfs.github.io/brandenburg-addresses/style.json`
-* 5\. Name für diese Ebene eingeben = `Brandenburg GeoBasis-DE/LGB (2022):
+* 5\. Name für diese Ebene eingeben = `Brandenburg GeoBasis-DE/LGB (2023):
   Georeferenzierte Adresse`. Wenn man genau diesen Namen verwendet, kann man
   beim Upload von Änderungen leicht die zwingend nötige Quellenangabe im
   `source`-Tag hinzufügen.
@@ -24,7 +24,7 @@ Hintergrundbild eingerichtet werden.
 ![Bildschirmfoto des Dialogs zum Hinzufügen einer neuen Hintergrundebene](/brandenburg-addresses/assets/images/imagery_de.png)
 
 Anschließend kann die Ebene über das Menü *Hintergrund* › *Brandenburg
-GeoBasis-DE/LGB (2022): Georeferenzierte Adresse* hinzugefügt werden.
+GeoBasis-DE/LGB (2023): Georeferenzierte Adresse* hinzugefügt werden.
 
 
 

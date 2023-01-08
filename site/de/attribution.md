@@ -10,7 +10,7 @@ nav_order: 1
 Diese Daten dürfen benutzt werden, um OpenStreetMap zu bearbeiten. Es **muss**
 dann zwingend als Quellenangabe
 
-    GeoBasis-DE/LGB (2022): Georeferenzierte Adresse
+    GeoBasis-DE/LGB (2023): Georeferenzierte Adresse
 
 im `source`-Tag des Changesets angegeben werden.
 
