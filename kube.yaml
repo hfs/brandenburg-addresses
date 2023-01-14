@@ -11,6 +11,8 @@ spec:
     image: brandenburg_addresses_postgres:latest
     args:
     - postgres
+    - -c
+    - logging_collector=true
     env:
       - name: POSTGRES_PASSWORD
         value: postgres
