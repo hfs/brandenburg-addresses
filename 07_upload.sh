@@ -9,6 +9,17 @@ export OSM_DATE=$(date -d @$(stat --format %Y data/$REGION-latest.osm.pbf) +%Y-%
 export CHANGE_DATE=$(cat data/timestamp.txt)
 export TILES_DATE=$(date -d @$(stat --format %Y tiles/) +%Y-%m-%dT%H:%M:%S%z)
 
+echo ">>> Checking if the expected number of tiles was generated"
+# There were several random problems with the tile generation crashing in the
+# middle. If that happens, cancel the upload and keep the data of the previous
+# day.
+number_of_tiles=$(find tiles/15/ -type f | wc -l)
+if [[ $number_of_tiles -lt 100000 ]]; then
+	echo ">>> Error: Expected more than 100,000 tiles on zoom level 15, but directory tiles/15/ contains only $number_of_tiles."
+	echo ">>> Canceling the upload."
+	exit 1
+fi
+
 [ -d ../brandenburg_addresses_site/ ]
 echo ">>> Clear website staging directory"
 rm -rf ../brandenburg_addresses_site/*
