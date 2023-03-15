@@ -56,7 +56,7 @@ end
 
 function osm2pgsql.process_way(object)
     local housenumber  = object.tags['addr:housenumber']
-    local street = object.tags['addr:street']
+    local street = object.tags['addr:street'] or object.tags['addr:place']
     local suburb = object.tags['addr:suburb']
     local postcode = object.tags['addr:postcode']
     local city = object.tags['addr:city']
@@ -89,7 +89,7 @@ end
 
 function osm2pgsql.process_relation(object)
     local housenumber  = object.tags['addr:housenumber']
-    local street = object.tags['addr:street']
+    local street = object.tags['addr:street'] or object.tags['addr:place']
     local suburb = object.tags['addr:suburb']
     local postcode = object.tags['addr:postcode']
     local city = object.tags['addr:city']
