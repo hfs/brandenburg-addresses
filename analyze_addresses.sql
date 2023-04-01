@@ -19,6 +19,24 @@ CREATE TABLE osm_address AS (
         ST_Transform(ST_Centroid(p.geom), 32633) AS geom_32633
     FROM address_polygon p
 );
+
+-- If one building has several addresses (duplexes, apartment buildings, big
+-- buildings such as schools with several housenumbers) they are sometimes
+-- mapped as "addr:housenumber=1,2,3" or "addr:housenumber=1;2;3". Split such
+-- housenumber strings and add one copy of the point for each single
+-- housenumber. As we're only interested which of the LGB addresses are matched,
+-- the duplicates are no problem.
+INSERT INTO osm_address
+SELECT
+    osm_id, osm_type,
+    regexp_split_to_table(housenumber, E'\\s*[,;]\\s*'),
+    street, suburb, postcode, city, geom, geom_32633
+FROM osm_address
+WHERE
+    housenumber LIKE '%,%' OR
+    housenumber LIKE '%;%'
+;
+
 CREATE INDEX ON osm_address USING GIST(geom);
 CREATE INDEX ON osm_address USING GIST(geom_32633);
 
