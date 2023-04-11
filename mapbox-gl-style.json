@@ -146,6 +146,17 @@
       "paint": {"circle-color": "#DA4096", "circle-radius": 1}
     },
     {
+      "id": "point_ignore_14",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "default",
+      "minzoom": 14,
+      "maxzoom": 15,
+      "filter": ["==", "category", 3],
+      "layout": {"visibility": "visible"},
+      "paint": {"circle-color": "#888888", "circle-radius": 1}
+    },
+    {
       "id": "point_match_15",
       "type": "circle",
       "source": "geoadr",
@@ -179,6 +190,17 @@
       "paint": {"circle-color": "#DA4096", "circle-radius": 2}
     },
     {
+      "id": "point_ignore_15",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "default",
+      "minzoom": 15,
+      "maxzoom": 16,
+      "filter": ["==", "category", 3],
+      "layout": {"visibility": "visible"},
+      "paint": {"circle-color": "#888888", "circle-radius": 2}
+    },
+    {
       "id": "point_match_16",
       "type": "circle",
       "source": "geoadr",
@@ -210,6 +232,17 @@
       "filter": ["==", "category", 2],
       "layout": {"visibility": "visible"},
       "paint": {"circle-color": "#DA4096", "circle-radius": 3}
+    },
+    {
+      "id": "point_ignore_16",
+      "type": "circle",
+      "source": "geoadr",
+      "source-layer": "default",
+      "minzoom": 16,
+      "maxzoom": 17,
+      "filter": ["==", "category", 3],
+      "layout": {"visibility": "visible"},
+      "paint": {"circle-color": "#888888", "circle-radius": 3}
     },
     {
       "id": "hnr_match_17",
@@ -264,6 +297,24 @@
       "paint": {"text-color": "#DA4096", "text-halo-width": 0}
     },
     {
+      "id": "hnr_ignore_17",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "default",
+      "minzoom": 17,
+      "maxzoom": 18,
+      "filter": ["==", "category", 3],
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Open Sans Regular"],
+        "text-allow-overlap": true,
+        "visibility": "visible",
+        "text-size": 12,
+        "icon-text-fit": "none"
+      },
+      "paint": {"text-color": "#888888", "text-halo-width": 0}
+    },
+    {
       "id": "hnr_match_18",
       "type": "symbol",
       "source": "geoadr",
@@ -316,6 +367,24 @@
       "paint": {"text-color": "#DA4096", "text-halo-width": 0}
     },
     {
+      "id": "hnr_ignore_18",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "default",
+      "minzoom": 18,
+      "maxzoom": 19,
+      "filter": ["==", "category", 3],
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Open Sans Regular"],
+        "text-allow-overlap": true,
+        "visibility": "visible",
+        "text-size": 14,
+        "icon-text-fit": "none"
+      },
+      "paint": {"text-color": "#888888", "text-halo-width": 0}
+    },
+    {
       "id": "hnr_match_19",
       "type": "symbol",
       "source": "geoadr",
@@ -364,6 +433,24 @@
         "icon-text-fit": "none"
       },
       "paint": {"text-color": "#DA4096", "text-halo-width": 0}
+    },
+    {
+      "id": "hnr_ignore_19",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "default",
+      "minzoom": 19,
+      "maxzoom": 20,
+      "filter": ["==", "category", 3],
+      "layout": {
+        "text-field": "{hnradz}",
+        "text-font": ["Open Sans Regular"],
+        "text-allow-overlap": true,
+        "visibility": "visible",
+        "text-size": 16,
+        "icon-text-fit": "none"
+      },
+      "paint": {"text-color": "#888888", "text-halo-width": 0}
     },
     {
       "id": "hnr_match_20",
@@ -417,6 +504,23 @@
         "visibility": "visible"
       },
       "paint": {"text-color": "#DA4096", "text-halo-width": 0}
+    },
+    {
+      "id": "hnr_ignore_20",
+      "type": "symbol",
+      "source": "geoadr",
+      "source-layer": "default",
+      "minzoom": 20,
+      "filter": ["==", "category", 3],
+      "layout": {
+        "text-field": "{address}",
+        "text-font": ["Open Sans Regular"],
+        "text-justify": "left",
+        "text-anchor": "left",
+        "text-allow-overlap": true,
+        "visibility": "visible"
+      },
+      "paint": {"text-color": "#888888", "text-halo-width": 0}
     }
   ]
 }

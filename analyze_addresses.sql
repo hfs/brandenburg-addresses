@@ -56,6 +56,7 @@ CREATE TABLE geoadr_matches AS
         g.plz,
         g.aud,    
         o.osm_id IS NOT NULL AS has_match,
+        g.stn LIKE '%KG%' OR g.stn LIKE '%Kleingarten%' AS "ignore",
         ST_Distance(o.geom_32633, g.geom) AS distance,
         h3_lat_lng_to_cell(point(ST_Transform(g.geom, 4326)), 10) AS h3_10
     FROM geoadr g LEFT JOIN osm_address o
@@ -72,7 +73,7 @@ CREATE TABLE geoadr_aggregation AS
         h3_10 AS h3_id,
         10 AS resolution,
         COUNT(has_match) FILTER (WHERE has_match) AS match,
-        COUNT(has_match) FILTER (WHERE NOT has_match) AS missing,
+        COUNT(has_match) FILTER (WHERE NOT has_match AND NOT "ignore") AS missing,
         ST_ForcePolygonCW(ST_GeomFromEWKB(h3_cell_to_boundary_wkb(h3_10))) AS geom
     FROM
         geoadr_matches g
@@ -229,7 +230,8 @@ AS $func$
             CASE
                 WHEN has_match AND distance <= 75 THEN 0
                 WHEN has_match AND distance > 75 THEN 1
-                WHEN NOT has_match THEN 2
+                WHEN NOT has_match AND NOT "ignore" THEN 2
+                ELSE 3
             END AS category
         FROM
             geoadr_matches m,
@@ -262,7 +264,8 @@ AS $func$
             CASE
                 WHEN has_match AND distance <= 75 THEN 0
                 WHEN has_match AND distance > 75 THEN 1
-                WHEN NOT has_match THEN 2
+                WHEN NOT has_match AND NOT "ignore" THEN 2
+                ELSE 3
             END AS category
         FROM
             geoadr_matches m,
