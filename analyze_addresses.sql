@@ -259,7 +259,15 @@ AS $func$
         SELECT
             id,
             hnradz,
-            stn || ' ' || hnradz || ', ' || plz || ' ' || ottname || ', ' || gmdname AS address,
+            COALESCE(stn, '') ||
+                CASE WHEN (hnradz <> '') IS TRUE THEN ' ' || hnradz ELSE '' END ||
+                CASE WHEN
+                    (stn <> '') IS TRUE OR (hnradz <> '') IS TRUE
+                    THEN ', ' ELSE '' END ||
+                CASE WHEN (plz <> '') IS TRUE THEN plz || ' ' ELSE '' END ||
+                CASE WHEN (ottname <>  '') IS TRUE AND ottname <> gmdname THEN ottname || ', ' ELSE '' END ||
+                COALESCE(gmdname, '')
+            AS address,
             ST_AsMVTGeom(ST_Transform(m.geom, 3857), args.bounds) AS geom,
             CASE
                 WHEN has_match AND distance <= 75 THEN 0
