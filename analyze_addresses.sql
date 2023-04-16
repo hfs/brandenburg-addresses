@@ -67,6 +67,19 @@ CREATE TABLE geoadr_matches AS
 ;
 CREATE INDEX ON geoadr_matches USING GIST(geom);
 
+CREATE VIEW geoadr_top_matches AS
+SELECT
+    h3_10,
+    (h3_cell_to_lat_lng(h3_10))[1] AS lng,
+    (h3_cell_to_lat_lng(h3_10))[0] AS lat,
+    COUNT(has_match) FILTER (WHERE NOT has_match AND NOT "ignore") AS "missing",
+    mode() WITHIN GROUP (ORDER BY gmdname) AS gmdname,
+    mode() WITHIN GROUP (ORDER BY stn) AS stn 
+FROM geoadr_matches m
+GROUP BY h3_10 
+ORDER BY "missing" DESC
+;
+
 DROP TABLE IF EXISTS geoadr_aggregation;
 CREATE TABLE geoadr_aggregation AS
     SELECT

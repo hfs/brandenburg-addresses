@@ -24,7 +24,7 @@ fi
 echo ">>> Clear website staging directory"
 rm -rf ../brandenburg_addresses_site/*
 echo ">>> Copy generated tiles and website into site directory"
-cp -a --reflink=auto tiles/ site/* .github/ style.json mapbox-gl-style.json ../brandenburg_addresses_site/
+cp -a --reflink=auto tiles/ site/* .github/ style.json mapbox-gl-style.json data/top10.csv ../brandenburg_addresses_site/
 echo ">>> Variable substitution"
 cat site/de/timestamp.md | envsubst > ../brandenburg_addresses_site/de/timestamp.md
 cat site/en/timestamp.md | envsubst > ../brandenburg_addresses_site/en/timestamp.md
