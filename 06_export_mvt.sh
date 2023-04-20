@@ -53,6 +53,6 @@ export_tiles geoadr_overview 0 13 geoadr_aggregation
 export_tiles geoadr_point 14 14 geoadr_matches
 export_tiles geoadr_detail 15 15 geoadr_matches
 
-echo ">>> Export Top 10 places with missing addresses"
-psql -c "\\COPY (SELECT * FROM geoadr_top_matches LIMIT 10) TO 'data/top10.csv' (FORMAT CSV)"
+echo ">>> Export Top 25 places with missing addresses"
+psql -c "\\COPY (SELECT * FROM geoadr_top_matches LIMIT 25) TO 'data/top.csv' (FORMAT CSV)"
 echo ">>> Export done"
