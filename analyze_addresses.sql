@@ -61,8 +61,8 @@ CREATE TABLE geoadr_matches AS
         h3_lat_lng_to_cell(point(ST_Transform(g.geom, 4326)), 10) AS h3_10
     FROM geoadr g LEFT JOIN osm_address o
     ON
-        g.stn = o.street AND 
-        REPLACE(LOWER(g.hnradz), ' ', '') = o.housenumber AND 
+        TRIM(BOTH FROM g.stn) = o.street AND
+        REPLACE(LOWER(g.hnradz), ' ', '') = o.housenumber AND
         ST_Distance(o.geom_32633, g.geom) < 200
 ;
 CREATE INDEX ON geoadr_matches USING GIST(geom);
