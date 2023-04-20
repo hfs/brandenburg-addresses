@@ -54,7 +54,7 @@ CREATE TABLE geoadr_matches AS
         g.ottname,
         g.stn,
         g.plz,
-        g.aud,    
+        g.aud,
         o.osm_id IS NOT NULL AS has_match,
         g.stn LIKE '%KG%' OR g.stn LIKE '%Kleingarten%' AS "ignore",
         ST_Distance(o.geom_32633, g.geom) AS distance,
@@ -74,9 +74,9 @@ SELECT
     (h3_cell_to_lat_lng(h3_10))[0] AS lat,
     COUNT(has_match) FILTER (WHERE NOT has_match AND NOT "ignore") AS "missing",
     mode() WITHIN GROUP (ORDER BY gmdname) AS gmdname,
-    mode() WITHIN GROUP (ORDER BY stn) AS stn 
+    mode() WITHIN GROUP (ORDER BY stn) AS stn
 FROM geoadr_matches m
-GROUP BY h3_10 
+GROUP BY h3_10
 ORDER BY "missing" DESC
 ;
 
