@@ -40,7 +40,7 @@ WHERE
 CREATE INDEX ON osm_address USING GIST(geom);
 CREATE INDEX ON osm_address USING GIST(geom_32633);
 
-DROP TABLE IF EXISTS geoadr_matches;
+DROP TABLE IF EXISTS geoadr_matches CASCADE;
 CREATE TABLE geoadr_matches AS
     SELECT
         g.id,
