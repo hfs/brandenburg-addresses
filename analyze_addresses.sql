@@ -47,9 +47,7 @@ CREATE TABLE geoadr_matches AS
         g.geom,
         g.oi,
         g.stnnr,
-        g.hnr,
-        g.adz,
-        g.hnradz,
+        g.house_number,
         g.gmdname,
         g.ottname,
         g.stn,
@@ -59,10 +57,27 @@ CREATE TABLE geoadr_matches AS
         g.stn LIKE '%KG%' OR g.stn LIKE '%Kleingarten%' AS "ignore",
         ST_Distance(o.geom_32633, g.geom) AS distance,
         h3_lat_lng_to_cell(point(ST_Transform(g.geom, 4326)), 10) AS h3_10
-    FROM geoadr g LEFT JOIN osm_address o
+    FROM (
+        SELECT
+            id,
+            geom,
+            oi,
+            stnnr,
+            CASE
+                WHEN adz IS NULL OR adz = '' THEN hnr
+                WHEN adz ~ '^[0-9]' THEN hnr || '/' || adz
+                ELSE hnr || adz
+            END AS house_number,
+            gmdname,
+            ottname,
+            stn,
+            plz,
+            aud
+        FROM geoadr
+    ) g LEFT JOIN osm_address o
     ON
         TRIM(BOTH FROM g.stn) = o.street AND
-        REPLACE(LOWER(g.hnradz), ' ', '') = o.housenumber AND
+        REPLACE(LOWER(g.house_number), ' ', '') = o.housenumber AND
         ST_Distance(o.geom_32633, g.geom) < 200
 ;
 CREATE INDEX ON geoadr_matches USING GIST(geom);
@@ -271,11 +286,11 @@ AS $func$
     FROM (
         SELECT
             id,
-            hnradz,
+            house_number,
             COALESCE(stn, '') ||
-                CASE WHEN (hnradz <> '') IS TRUE THEN ' ' || hnradz ELSE '' END ||
+                CASE WHEN (house_number <> '') IS TRUE THEN ' ' || house_number ELSE '' END ||
                 CASE WHEN
-                    (stn <> '') IS TRUE OR (hnradz <> '') IS TRUE
+                    (stn <> '') IS TRUE OR (house_number <> '') IS TRUE
                     THEN ', ' ELSE '' END ||
                 CASE WHEN (plz <> '') IS TRUE THEN plz || ' ' ELSE '' END ||
                 CASE WHEN (ottname <>  '') IS TRUE AND ottname <> gmdname THEN ottname || ', ' ELSE '' END ||
