@@ -286,7 +286,7 @@ AS $func$
     FROM (
         SELECT
             id,
-            house_number,
+            house_number AS hnradz,
             COALESCE(stn, '') ||
                 CASE WHEN (house_number <> '') IS TRUE THEN ' ' || house_number ELSE '' END ||
                 CASE WHEN
