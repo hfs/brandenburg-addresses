@@ -66,7 +66,7 @@ CREATE TABLE geoadr_matches AS
             CASE
                 WHEN adz IS NULL OR adz = '' THEN hnr
                 WHEN adz ~ '^[0-9]' THEN hnr || '/' || adz
-                ELSE hnr || adz
+                ELSE hnr || regexp_replace(adz, '[pP][0-9]+', '/\&')
             END AS house_number,
             gmdname,
             ottname,
