@@ -76,7 +76,7 @@ CREATE TABLE geoadr_matches AS
         FROM geoadr
     ) g LEFT JOIN osm_address o
     ON
-        TRIM(BOTH FROM g.stn) = o.street AND
+        REPLACE(TRIM(BOTH FROM g.stn), ' - ', '-') = REPLACE(o.street, ' - ', '-') AND
         REPLACE(LOWER(g.house_number), ' ', '') = o.housenumber AND
         ST_Distance(o.geom_32633, g.geom) < 200
 ;
