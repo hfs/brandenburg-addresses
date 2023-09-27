@@ -3,56 +3,32 @@
 set -o pipefail
 source env.sh
 
-pg_tileserv &> /dev/null &
-pid_tileserv=$!
+echo ">>> Export tiles for zoom levels 0 to 13 (hexagon overview layers)"
+rm -rf tmp_export/
+mkdir tmp_export
+DB_CONNECTION="PG:host=$PGHOST dbname=$PGDATABASE user=$PGUSER password=$PGPASSWORD"
+echo "6 0 6
+7 7 7
+8 8 8
+9 9 9
+10 10 10
+11 11 13" | while read zoom minzoom maxzoom; do
+  ogr2ogr -f GeoJSON /dev/stdout "$DB_CONNECTION" -sql "SELECT * FROM aggregation_for_resolution($zoom)" -nln "geoadr $zoom" \
+		| tippecanoe -Z$minzoom -z$maxzoom --output-to-directory=tmp_export/tiles_$zoom -l default --force --no-feature-limit --no-tile-size-limit --no-tile-compression
+done
 
-# Stop pg_tileserv when the script finishes
-cleanup() {
-	kill $pid_tileserv
-}
-trap cleanup EXIT
+echo ">>> Export tiles for zoom level 14 (points)"
+ogr2ogr -f GeoJSON /dev/stdout "$DB_CONNECTION"  geoadr_point \
+		| tippecanoe -Z14 -z14 --output-to-directory=tmp_export/tiles_14 -l default --force --no-feature-limit --no-tile-size-limit --no-tile-compression
 
-# Register function for export
-psql -f tile_coordinates.sql
+echo ">>> Export tiles for zoom level 15 (full data)"
+ogr2ogr -f GeoJSON /dev/stdout "$DB_CONNECTION"  geoadr_detail \
+		| tippecanoe -Z15 -z15 --output-to-directory=tmp_export/tiles_15 -l default --force --no-feature-limit --no-tile-size-limit --no-tile-compression
 
-iterate_tiles() {
-	local table="$1"
-	local min_zoom="$2"
-	local max_zoom="$3"
-	psql -c "\\COPY (SELECT x, y, z FROM getTiles((SELECT ST_Extent(ST_Transform(geom, 4326)) FROM $table), $min_zoom, $max_zoom)) TO STDOUT (FORMAT CSV, HEADER FALSE, DELIMITER '/')"
-}
-
-export_tiles() {
-	local table="$1"
-	local min_zoom="$2"
-	local max_zoom="$3"
-	local extent_table="${4:-$1}"
-
-	echo ">>> Exporting table $table for zoom levels $min_zoom to $max_zoom"
-	tiles=$(mktemp -t addresses.XXXXXX)
-	iterate_tiles $extent_table $min_zoom $max_zoom > $tiles
-	# Create all directories in advance
-	cut -d / -f 1-2 $tiles | sort -u | xargs -I % mkdir -p tiles/%
-
-	# Workaround for kernel panic experienced every few days: Ignore curl's exit code
-	xargs -P 6 -I % --verbose \
-		./bliss curl --silent "http://localhost:7800/public.$table/%.pbf" -o tiles/%.mvt \
-		< $tiles
-	echo -n ">>> Number of tiles expected: "
-	wc -l < $tiles
-	echo -n ">>> Number of tiles generated: "
-	find tiles -name "*.mvt" | wc -l
-	rm $tiles
-}
-
-# Zoom levels are mutually exclusive, because tiles from all tables are merged
-# in a single directory
-echo ">>> Delete old 'tiles' directory"
-rm -rf tiles
-export_tiles geoadr_overview 0 13 geoadr_aggregation
-export_tiles geoadr_point 14 14 geoadr_matches
-export_tiles geoadr_detail 15 15 geoadr_matches
-
-echo ">>> Export Top 25 places with missing addresses"
-psql -c "\\COPY (SELECT * FROM geoadr_top_matches LIMIT 25) TO 'data/top.csv' (FORMAT CSV)"
-echo ">>> Export done"
+echo ">>> Merge tile sets in single directory"
+rm -rf tiles/
+mkdir tiles
+tile-join --no-tile-compression -e tiles tmp_export/tiles_*
+rm -rf tmp_export/
+rm tiles/metadata.json
+mmv 'tiles/*/*/*.pbf' 'tiles/#1/#2/#3.mvt'

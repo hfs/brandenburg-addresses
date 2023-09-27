@@ -78,7 +78,7 @@ in tiles in
 ### [06_export_mvt.sh](06_export_mvt.sh)
 
 Export the data in MVT format. This uses
-[pg_tileserv](https://github.com/CrunchyData/pg_tileserv). It calls the MVT
+[tippecanoe](https://github.com/felt/tippecanoe). It calls the MVT
 export functions defined in `analyze_addresses.sql` and writes them to files.
 
 
@@ -119,11 +119,11 @@ The generated output data can be found in `tiles/`.
 
 You need to install these dependencies:
 
-* curl, wget, pv
+* curl, wget, pv, mmv
 * osm2pgsql, osmium-tool
 * PostgreSQL server and client, PostGIS
-* pg_tileserv
 * ogr2ogr (package gdal-bin)
+* [tippecanoe](https://github.com/felt/tippecanoe)
 
 Also you need PostgreSQL extensions [H3](https://pgxn.org/dist/h3/) and
 [kmeans](https://pgxn.org/dist/kmeans/) which probably aren’t available as

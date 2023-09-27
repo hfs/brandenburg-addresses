@@ -19,7 +19,7 @@ LABEL maintainer="openstreetmap.org@knackich.de"
 RUN apt-get update && \
     apt-get -y dist-upgrade && \
     apt-get -y install --no-install-recommends moreutils unzip curl wget \
-        osm2pgsql osmium-tool postgresql-client-15 gdal-bin pv \
+        osm2pgsql osmium-tool postgresql-client-15 gdal-bin pv mmv \
         libsqlite3-0 zlib1g && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*

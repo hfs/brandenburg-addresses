@@ -198,6 +198,34 @@ FROM
 ;
 
 
+-- Function to export the overview polygons for a certain resolution
+CREATE OR REPLACE
+FUNCTION public.aggregation_for_resolution(z integer)
+RETURNS TABLE(geom geometry, "match" bigint, missing bigint, "cluster" int)
+AS $func$
+    SELECT
+        g.geom,
+        g."match",
+        g.missing,
+        b."cluster"
+    FROM
+        geoadr_aggregation g,
+        breakpoints b
+    WHERE
+        CASE
+          WHEN z <= 6 THEN 5
+          WHEN z >= 11 THEN 10
+          ELSE z - 1
+        END = g.resolution AND
+        g.resolution = b.resolution AND
+        g.missing >= b.bound_lower AND
+        g.missing <= b.bound_upper
+$func$
+LANGUAGE 'sql'
+STABLE
+PARALLEL SAFE
+;
+
 -- Function to serve geoadr_aggregate as MVTs based on the requested zoom z.
 -- The tile contains one "cluster" for each color interval.
 CREATE OR REPLACE
@@ -240,6 +268,19 @@ PARALLEL SAFE
 
 COMMENT ON FUNCTION geoadr_overview  IS 'Number of matched and missing house number coordinates, aggregated on a hexagonal grid';
 
+CREATE OR REPLACE VIEW geoadr_point AS
+SELECT
+    ST_Transform(geom, 4326) AS geom,
+    CASE
+        WHEN has_match AND distance <= 75 THEN 0
+        WHEN has_match AND distance > 75 THEN 1
+        WHEN NOT has_match AND NOT "ignore" THEN 2
+        ELSE 3
+    END AS category
+FROM
+    geoadr_matches
+;
+
 -- Simplified version of table for MVT tiles at lower zoom levels containing
 -- only the point geometry but no details
 CREATE OR REPLACE
@@ -271,6 +312,30 @@ $func$
 LANGUAGE 'sql'
 STABLE
 PARALLEL SAFE
+;
+
+CREATE OR REPLACE VIEW geoadr_detail AS
+SELECT
+    id,
+    house_number AS hnradz,
+    COALESCE(stn, '') ||
+        CASE WHEN (house_number <> '') IS TRUE THEN ' ' || house_number ELSE '' END ||
+        CASE WHEN
+            (stn <> '') IS TRUE OR (house_number <> '') IS TRUE
+            THEN ', ' ELSE '' END ||
+        CASE WHEN (plz <> '') IS TRUE THEN plz || ' ' ELSE '' END ||
+        CASE WHEN (ottname <>  '') IS TRUE AND ottname <> gmdname THEN ottname || ', ' ELSE '' END ||
+        COALESCE(gmdname, '')
+    AS address,
+    CASE
+        WHEN has_match AND distance <= 75 THEN 0
+        WHEN has_match AND distance > 75 THEN 1
+        WHEN NOT has_match AND NOT "ignore" THEN 2
+        ELSE 3
+    END AS category,
+    ST_Transform(geom, 4326) AS geom
+FROM
+    geoadr_matches m
 ;
 
 CREATE OR REPLACE
