@@ -9,4 +9,5 @@ dropdb --if-exists $PGDATABASE
 createdb $PGDATABASE
 psql -c "CREATE EXTENSION postgis"
 psql -c "CREATE EXTENSION h3"
+psql -c "CREATE EXTENSION h3_postgis CASCADE"
 psql -c "CREATE EXTENSION kmeans"
