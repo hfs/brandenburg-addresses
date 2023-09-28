@@ -32,3 +32,7 @@ tile-join --no-tile-compression -e tiles tmp_export/tiles_*
 rm -rf tmp_export/
 rm tiles/metadata.json
 mmv 'tiles/*/*/*.pbf' 'tiles/#1/#2/#3.mvt'
+
+echo ">>> Export missing addresses in PMTiles format"
+ogr2ogr -f GeoJSON /dev/stdout "$DB_CONNECTION" missing_with_osm_tags -nln missing \
+		| tippecanoe --force --output=data/missing.pmtiles --name=missing

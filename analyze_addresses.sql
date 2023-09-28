@@ -338,6 +338,25 @@ FROM
     geoadr_matches m
 ;
 
+CREATE OR REPLACE VIEW missing_with_osm_tags AS
+SELECT
+    house_number as "addr:housenumber",
+    stn AS "addr:street",
+    plz AS "addr:postcode",
+    ottname AS "addr:suburb",
+    gmdname AS "addr:city",
+    'DE' AS "addr:country",
+    ST_Transform(geom, 4326) AS geom
+FROM
+    geoadr_matches m
+WHERE
+    (
+        NOT has_match OR
+        distance > 75
+    ) AND
+    NOT "ignore"
+;
+
 CREATE OR REPLACE
 FUNCTION public.geoadr_detail(z integer, x integer, y integer)
 RETURNS bytea
