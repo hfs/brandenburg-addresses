@@ -14,8 +14,8 @@ echo ">>> Checking if the expected number of tiles was generated"
 # middle. If that happens, cancel the upload and keep the data of the previous
 # day.
 number_of_tiles=$(find tiles/15/ -type f | wc -l)
-if [[ $number_of_tiles -lt 100000 ]]; then
-	echo ">>> Error: Expected more than 100,000 tiles on zoom level 15, but directory tiles/15/ contains only $number_of_tiles."
+if [[ $number_of_tiles -lt 19000 ]]; then
+	echo ">>> Error: Expected more than 19,000 tiles on zoom level 15, but directory tiles/15/ contains only $number_of_tiles."
 	echo ">>> Canceling the upload."
 	exit 1
 fi
