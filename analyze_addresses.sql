@@ -80,6 +80,22 @@ CREATE TABLE geoadr_matches AS
         REPLACE(LOWER(g.house_number), ' ', '') = o.housenumber AND
         ST_Distance(o.geom_32633, g.geom) < 200
 ;
+-- Delete duplicate matches if addresses exist several times in OSM.
+-- This is legitimate: An address can e.g. be tagged on a building and on a POI
+-- inside the building.
+DELETE FROM geoadr_matches
+WHERE id IN (
+    SELECT id
+    FROM  (
+        SELECT
+            id,
+            ROW_NUMBER() OVER(PARTITION BY id ORDER BY distance, id ASC) AS row_num
+        FROM geoadr_matches
+    ) find_duplicates
+    WHERE find_duplicates.row_num > 1
+)
+;
+ALTER TABLE geoadr_matches ADD PRIMARY KEY(id);
 CREATE INDEX ON geoadr_matches USING GIST(geom);
 
 CREATE VIEW geoadr_top_matches AS
