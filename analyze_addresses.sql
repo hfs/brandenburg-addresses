@@ -116,8 +116,8 @@ CREATE TABLE geoadr_aggregation AS
     SELECT
         h3_10 AS h3_id,
         10 AS resolution,
-        COUNT(has_match) FILTER (WHERE has_match) AS match,
-        COUNT(has_match) FILTER (WHERE NOT has_match AND NOT "ignore") AS missing,
+        COUNT(has_match) FILTER (WHERE has_match AND distance <= 75) AS match,
+        COUNT(has_match) FILTER (WHERE (NOT has_match OR distance > 75) AND NOT "ignore") AS missing,
         ST_ForcePolygonCW(ST_GeomFromEWKB(h3_cell_to_boundary_wkb(h3_10))) AS geom
     FROM
         geoadr_matches g
