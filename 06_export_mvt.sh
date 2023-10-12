@@ -36,3 +36,6 @@ mmv 'tiles/*/*/*.pbf' 'tiles/#1/#2/#3.mvt'
 echo ">>> Export missing addresses in PMTiles format"
 ogr2ogr -f GeoJSON /dev/stdout "$DB_CONNECTION" missing_with_osm_tags -nln missing \
 		| tippecanoe --force --output=data/missing.pmtiles --name=missing
+
+echo ">>> Export clusters of missing addresses as polygons in GeoJSON format"
+ogr2ogr data/task_area.geojson "$DB_CONNECTION" -sql "SELECT * FROM task_area ORDER BY id" -nln task_area -lco RFC7946=YES

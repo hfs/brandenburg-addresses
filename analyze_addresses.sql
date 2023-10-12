@@ -414,3 +414,64 @@ LANGUAGE 'sql'
 STABLE
 PARALLEL SAFE
 ;
+
+DROP TABLE IF EXISTS geoadr_missing_cluster CASCADE;
+CREATE TABLE geoadr_missing_cluster AS
+WITH missing_points AS (
+    SELECT *
+    FROM geoadr_matches
+    WHERE
+        (NOT has_match OR
+        distance > 75) AND
+        NOT "ignore"
+)
+SELECT
+    id,
+    kmeans(
+        -- Columns to use for the distance function
+        ARRAY[ST_X(geom), ST_Y(geom)],
+        -- Number of classes. Every class should have roughly 50 points
+        (SELECT COUNT(*)::int / 40 AS cnt FROM missing_points),
+        -- Start centroids for the clusters.
+        -- By picking every 50th point after sorting by street ID and house
+        -- number the points are evenly spaced out over the whole area, with
+        -- higher density where more points are missing
+        (
+            SELECT
+                array_agg(xy)
+            FROM
+                (
+                    SELECT
+                        ROW_NUMBER() OVER(ORDER BY stnnr, house_number) AS rnk,
+                        ARRAY[ST_X(geom), ST_Y(geom)] AS xy
+                    FROM
+                        missing_points
+                ) fixed_order
+            WHERE rnk % 40 = 0
+        )
+    ) OVER () AS "cluster"
+FROM
+    missing_points m
+;
+ALTER TABLE geoadr_missing_cluster ADD PRIMARY KEY(id);
+
+CREATE OR REPLACE VIEW geoadr_missing AS
+SELECT m.*, c."cluster"
+FROM geoadr_matches m, geoadr_missing_cluster c
+WHERE m.id = c.id
+;
+
+DROP TABLE IF EXISTS task_area;
+CREATE TABLE task_area AS
+SELECT "cluster" AS id, ST_ConvexHull(ST_Collect(geom)) AS geom, COUNT("cluster")
+FROM geoadr_missing
+GROUP BY "cluster"
+;
+-- If a cluster contains only one or two points, the convex hull is only a
+-- point or linestring. Buffering converts them into polygons.
+UPDATE task_area
+SET geom = ST_Buffer(geom, 500)
+WHERE ST_GeometryType(geom) != 'ST_Polygon'
+;
+ALTER TABLE task_area ADD PRIMARY KEY ("id");
+CREATE INDEX ON task_area USING GIST(geom);
