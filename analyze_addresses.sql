@@ -430,10 +430,10 @@ SELECT
     kmeans(
         -- Columns to use for the distance function
         ARRAY[ST_X(geom), ST_Y(geom)],
-        -- Number of classes. Every class should have roughly 50 points
-        (SELECT COUNT(*)::int / 40 AS cnt FROM missing_points),
+        -- Number of classes. Every class should have roughly 10 points
+        (SELECT COUNT(*)::int / 10 AS cnt FROM missing_points),
         -- Start centroids for the clusters.
-        -- By picking every 50th point after sorting by street ID and house
+        -- By picking every 10th point after sorting by street ID and house
         -- number the points are evenly spaced out over the whole area, with
         -- higher density where more points are missing
         (
@@ -447,7 +447,7 @@ SELECT
                     FROM
                         missing_points
                 ) fixed_order
-            WHERE rnk % 40 = 0
+            WHERE rnk % 10 = 0
         )
     ) OVER () AS "cluster"
 FROM
@@ -470,7 +470,7 @@ GROUP BY "cluster"
 -- If a cluster contains only one or two points, the convex hull is only a
 -- point or linestring. Buffering converts them into polygons.
 UPDATE task_area
-SET geom = ST_Buffer(geom, 500)
+SET geom = ST_Buffer(geom, 100)
 WHERE ST_GeometryType(geom) != 'ST_Polygon'
 ;
 ALTER TABLE task_area ADD PRIMARY KEY ("id");
