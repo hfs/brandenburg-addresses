@@ -16,7 +16,7 @@ as background imagery layer.
 * *Preferences* (F12) › *Imagery* › *Imagery providers*.
 * Press the button *+ MVT* next to the bottom table *Selected entries*.
 * 2\. URL = `https://hfs.github.io/brandenburg-addresses/style.json`
-* 5\. Enter name for this layer = `Brandenburg GeoBasis-DE/LGB (2023):
+* 5\. Enter name for this layer = `Brandenburg GeoBasis-DE/LGB (2024):
   Georeferenzierte Adresse`. If you use exactly this name (in German), it will
   automatically be used for the mandatory attribution in the `source` tag when
   uploading changsets.
@@ -24,4 +24,4 @@ as background imagery layer.
 ![Screenshot of the dialog to add a new imagery provider](/brandenburg-addresses/assets/images/imagery_en.png)
 
 Afterwards you can add the layer via the menu *Imagery* › *Brandenburg
-GeoBasis-DE/LGB (2023): Georeferenzierte Adresse*.
+GeoBasis-DE/LGB (2024): Georeferenzierte Adresse*.

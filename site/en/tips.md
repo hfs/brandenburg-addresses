@@ -32,8 +32,8 @@ dialogue, where you can select a keyboard shortcut.
 
 ## Background layers
 
-It is recommended to add the aerial images `Brandenburg GeoBasis-DE/LGB (2023):
-DOP20c` and the “official” map `Brandenburg GeoBasis-DE/LGB (2023): WebAtlasDE
+It is recommended to add the aerial images `Brandenburg GeoBasis-DE/LGB (2024):
+DOP20c` and the “official” map `Brandenburg GeoBasis-DE/LGB (2024): WebAtlasDE
 BE/BB`. With the keys `Alt+1`, `Alt+2` etc. you can quickly hide and show
 layers.
 
