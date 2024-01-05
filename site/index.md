@@ -72,3 +72,9 @@ Postleitzahl, Ortsteil und Gemeinde eingeblendet. Dies ist hilfreich, um direkt
 an diese Daten zu kommen, oder falls die Zuordnung zur Straße nicht klar ist.
 
 ![Hintergrund-Ebene mit vollständigen Adressen](assets/images/josm_4.jpg)
+
+
+## Einbindung in MapWithAI
+
+Eine alternative Möglichkeit für Fortgeschrittene ist die
+[Verwendung der Adress-Daten mit MapWithAI](de/mapwithai/).

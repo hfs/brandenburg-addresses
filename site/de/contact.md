@@ -2,7 +2,7 @@
 title: Kontakt
 layout: page
 parent: Adressen in Brandenburg 🇩🇪
-nav_order: 6
+nav_order: 7
 ---
 
 # Kontakt

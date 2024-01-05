@@ -65,3 +65,8 @@ code, municipal district and municipality are shown. This is helpful to get
 this data directly, or if it’s not clear which street the number belongs to.
 
 ![Background layer with complete addresses](assets/images/josm_4.jpg)
+
+
+## Use with MapWithAI
+
+An alternative method for advanced mappers is to [use the data with MapWithAI](mapwithai/)

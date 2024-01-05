@@ -2,7 +2,7 @@
 title: Tips
 layout: page
 parent: Brandenburg Addresses 🇬🇧
-nav_order: 4
+nav_order: 5
 ---
 
 # Tips for editing addresses in JOSM

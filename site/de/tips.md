@@ -2,7 +2,7 @@
 title: Tipps
 layout: page
 parent: Adressen in Brandenburg 🇩🇪
-nav_order: 4
+nav_order: 5
 ---
 
 # Tipps zum Bearbeiten von Adressen in JOSM
