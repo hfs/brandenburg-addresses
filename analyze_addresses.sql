@@ -1,4 +1,4 @@
-ALTER TABLE geoadr ALTER COLUMN geom TYPE geometry(Point, 32633);
+ALTER TABLE adressen_bb ALTER COLUMN geom TYPE geometry(Point, 25833);
 
 DROP TABLE IF EXISTS osm_address;
 CREATE TABLE osm_address AS (
@@ -8,7 +8,7 @@ CREATE TABLE osm_address AS (
         REPLACE(LOWER(housenumber), ' ', '') AS housenumber,
         street, suburb, postcode, city,
         geom,
-        ST_Transform(p.geom, 32633) AS geom_32633
+        ST_Transform(p.geom, 25833) AS geom_25833
     FROM address_point p
     UNION ALL
     SELECT
@@ -16,7 +16,7 @@ CREATE TABLE osm_address AS (
         REPLACE(LOWER(housenumber), ' ', '') AS housenumber,
         street, suburb, postcode, city,
         ST_Centroid(p.geom) AS geom,
-        ST_Transform(ST_Centroid(p.geom), 32633) AS geom_32633
+        ST_Transform(ST_Centroid(p.geom), 25833) AS geom_25833
     FROM address_polygon p
 );
 
@@ -30,7 +30,7 @@ INSERT INTO osm_address
 SELECT
     osm_id, osm_type,
     regexp_split_to_table(housenumber, E'\\s*[,;]\\s*'),
-    street, suburb, postcode, city, geom, geom_32633
+    street, suburb, postcode, city, geom, geom_25833
 FROM osm_address
 WHERE
     housenumber LIKE '%,%' OR
@@ -38,47 +38,47 @@ WHERE
 ;
 
 CREATE INDEX ON osm_address USING GIST(geom);
-CREATE INDEX ON osm_address USING GIST(geom_32633);
+CREATE INDEX ON osm_address USING GIST(geom_25833);
 
 DROP TABLE IF EXISTS geoadr_matches CASCADE;
 CREATE TABLE geoadr_matches AS
     SELECT
         g.id,
         g.geom,
-        g.oi,
+        g.oid,
         g.stnnr,
         g.house_number,
-        g.gmdname,
-        g.ottname,
-        g.stn,
-        g.plz,
+        g.gmd,
+        g.ott,
+        g.str,
+        g.postplz,
         g.aud,
         o.osm_id IS NOT NULL AS has_match,
-        g.stn LIKE '%KG%' OR g.stn LIKE '%Kleingarten%' AS "ignore",
-        ST_Distance(o.geom_32633, g.geom) AS distance,
+        g.str LIKE '%KG%' OR g.str LIKE '%Kleingarten%' AS "ignore",
+        ST_Distance(o.geom_25833, g.geom) AS distance,
         h3_lat_lng_to_cell(point(ST_Transform(g.geom, 4326)), 10) AS h3_10
     FROM (
         SELECT
             id,
             geom,
-            oi,
-            stnnr,
+            oid_ AS oid,
+            landschl || regbezschl || kreisschl || gmdschl || ottschl || strschl AS stnnr,
             CASE
-                WHEN adz IS NULL OR adz = '' THEN hnr
-                WHEN adz ~ '^[0-9]' THEN hnr || '/' || adz
-                ELSE hnr || regexp_replace(adz, '[pP][0-9]+', '/\&')
+                WHEN adz IS NULL OR adz = '' THEN CAST(hnr AS text)
+                WHEN adz ~ '^[0-9]' THEN CAST(hnr AS text) || '/' || adz
+                ELSE CAST (hnr AS text) || regexp_replace(adz, '[pP][0-9]+', '/\&')
             END AS house_number,
-            gmdname,
-            ottname,
-            stn,
-            plz,
+            gmd,
+            ott,
+            str,
+            postplz,
             aud
-        FROM geoadr
+        FROM adressen_bb
     ) g LEFT JOIN osm_address o
     ON
-        REPLACE(TRIM(BOTH FROM g.stn), ' - ', '-') = REPLACE(o.street, ' - ', '-') AND
+        REPLACE(TRIM(BOTH FROM g.str), ' - ', '-') = REPLACE(o.street, ' - ', '-') AND
         REPLACE(LOWER(g.house_number), ' ', '') = o.housenumber AND
-        ST_Distance(o.geom_32633, g.geom) < 200
+        ST_Distance(o.geom_25833, g.geom) < 200
 ;
 -- Delete duplicate matches if addresses exist several times in OSM.
 -- This is legitimate: An address can e.g. be tagged on a building and on a POI
@@ -104,8 +104,8 @@ SELECT
     (h3_cell_to_lat_lng(h3_10))[1] AS lng,
     (h3_cell_to_lat_lng(h3_10))[0] AS lat,
     COUNT(has_match) FILTER (WHERE NOT has_match AND NOT "ignore") AS "missing",
-    mode() WITHIN GROUP (ORDER BY gmdname) AS gmdname,
-    mode() WITHIN GROUP (ORDER BY stn) AS stn
+    mode() WITHIN GROUP (ORDER BY gmd) AS gmd,
+    mode() WITHIN GROUP (ORDER BY str) AS str
 FROM geoadr_matches m
 GROUP BY h3_10
 ORDER BY "missing" DESC
@@ -322,7 +322,7 @@ AS $func$
             geoadr_matches m,
             args
         WHERE
-            ST_Intersects(m.geom, ST_Transform(args.bounds, 32633))
+            ST_Intersects(m.geom, ST_Transform(args.bounds, 25833))
     ) mvtgeom
 $func$
 LANGUAGE 'sql'
@@ -334,14 +334,14 @@ CREATE OR REPLACE VIEW geoadr_detail AS
 SELECT
     id,
     house_number AS hnradz,
-    COALESCE(stn, '') ||
+    COALESCE(str, '') ||
         CASE WHEN (house_number <> '') IS TRUE THEN ' ' || house_number ELSE '' END ||
         CASE WHEN
-            (stn <> '') IS TRUE OR (house_number <> '') IS TRUE
+            (str <> '') IS TRUE OR (house_number <> '') IS TRUE
             THEN ', ' ELSE '' END ||
-        CASE WHEN (plz <> '') IS TRUE THEN plz || ' ' ELSE '' END ||
-        CASE WHEN (ottname <>  '') IS TRUE AND ottname <> gmdname THEN ottname || ', ' ELSE '' END ||
-        COALESCE(gmdname, '')
+        CASE WHEN (postplz <> '') IS TRUE THEN postplz || ' ' ELSE '' END ||
+        CASE WHEN (ott <>  '') IS TRUE AND ott <> gmd THEN ott || ', ' ELSE '' END ||
+        COALESCE(gmd, '')
     AS address,
     CASE
         WHEN has_match AND distance <= 75 THEN 0
@@ -357,10 +357,10 @@ FROM
 CREATE OR REPLACE VIEW missing_with_osm_tags AS
 SELECT
     house_number as "addr:housenumber",
-    stn AS "addr:street",
-    plz AS "addr:postcode",
-    ottname AS "addr:suburb",
-    gmdname AS "addr:city",
+    str AS "addr:street",
+    postplz AS "addr:postcode",
+    ott AS "addr:suburb",
+    gmd AS "addr:city",
     'DE' AS "addr:country",
     ST_Transform(geom, 4326) AS geom
 FROM
@@ -387,14 +387,14 @@ AS $func$
         SELECT
             id,
             house_number AS hnradz,
-            COALESCE(stn, '') ||
+            COALESCE(str, '') ||
                 CASE WHEN (house_number <> '') IS TRUE THEN ' ' || house_number ELSE '' END ||
                 CASE WHEN
-                    (stn <> '') IS TRUE OR (house_number <> '') IS TRUE
+                    (str <> '') IS TRUE OR (house_number <> '') IS TRUE
                     THEN ', ' ELSE '' END ||
-                CASE WHEN (plz <> '') IS TRUE THEN plz || ' ' ELSE '' END ||
-                CASE WHEN (ottname <>  '') IS TRUE AND ottname <> gmdname THEN ottname || ', ' ELSE '' END ||
-                COALESCE(gmdname, '')
+                CASE WHEN (postplz <> '') IS TRUE THEN postplz || ' ' ELSE '' END ||
+                CASE WHEN (ott <>  '') IS TRUE AND ott <> gmd THEN ott || ', ' ELSE '' END ||
+                COALESCE(gmd, '')
             AS address,
             ST_AsMVTGeom(ST_Transform(m.geom, 3857), args.bounds) AS geom,
             CASE
@@ -407,7 +407,7 @@ AS $func$
             geoadr_matches m,
             args
         WHERE
-            ST_Intersects(m.geom, ST_Transform(args.bounds, 32633))
+            ST_Intersects(m.geom, ST_Transform(args.bounds, 25833))
     ) mvtgeom
 $func$
 LANGUAGE 'sql'
