@@ -4,7 +4,7 @@ set -o pipefail
 
 source env.sh
 
-export ADDRESS_DATE=$(sqlite3 data/geoadr.gpkg 'SELECT MAX("AUD") FROM geoadr')
+export ADDRESS_DATE=$(sqlite3 data/adressen-bb.gpkg 'SELECT MAX("aud") FROM adressen_bb')
 export OSM_DATE=$(date -d @$(stat --format %Y data/$REGION-latest.osm.pbf) +%Y-%m-%dT%H:%M:%S%z)
 export CHANGE_DATE=$(cat data/timestamp.txt)
 export TILES_DATE=$(date -d @$(stat --format %Y tiles/) +%Y-%m-%dT%H:%M:%S%z)

@@ -4,10 +4,10 @@ source env.sh
 
 cd data
 
-if [ ! -r geoadr.gpkg ]; then
+if [ ! -r adressen-bb.gpkg ]; then
     echo "Please go to https://geobroker.geobasis-bb.de/ and download the data"
     echo "set “Georeferenzierte Adresse” in GeoPackage format. Please provide"
-    echo "it as file data/geoadr.gpkg."
+    echo "it as file data/adressen-bb.gpkg."
     exit 1
 fi
 echo ">>> Downloading OpenStreetMap dump for '$REGION_PATH'"
