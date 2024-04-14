@@ -10,21 +10,9 @@ nav_order: 3
 Die JOSM-Version muss **18578** oder neuer sein. Eine neuere Version kann man
 ggf. auf der [JOSM-Seite](https://josm.openstreetmap.de/) herunterladen.
 
-Die Daten werden als Vektordaten-Layer bereitgestellt. Sie müssen einmalig als
-Hintergrundbild eingerichtet werden.
+Man findet die Daten im Menü *Hintergrund* › *Brandenburg GeoBasis-DE/LGB
+(2024): Georeferenzierte Adresse*. Man muss sich in der Hauptkarte in
+Brandenburg befinden, damit der Menüeintrag angezeigt wird.
 
-* *Einstellungen* (F12) › *Hintergrundbild* › *Hintergrundanbieter*.
-* Neben der unteren Liste *Gewählte Einträge* drücke den Knopf *+ MVT*.
-* 2\. URL = `https://hfs.github.io/brandenburg-addresses/style.json`
-* 5\. Name für diese Ebene eingeben = `Brandenburg GeoBasis-DE/LGB (2024):
-  Georeferenzierte Adresse`. Wenn man genau diesen Namen verwendet, kann man
-  beim Upload von Änderungen leicht die zwingend nötige Quellenangabe im
-  `source`-Tag hinzufügen.
-
-![Bildschirmfoto des Dialogs zum Hinzufügen einer neuen Hintergrundebene](/brandenburg-addresses/assets/images/imagery_de.png)
-
-Anschließend kann die Ebene über das Menü *Hintergrund* › *Brandenburg
-GeoBasis-DE/LGB (2024): Georeferenzierte Adresse* hinzugefügt werden.
-
-
+![Bildschirmfoto des Menüs zur Auswahl des Hintergrundbildes. Darin ist der Menüeintrag für diese Daten hervorgehoben](/brandenburg-addresses/assets/images/layer_de.png)
 

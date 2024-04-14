@@ -10,18 +10,8 @@ nav_order: 3
 The JOSM version must be **18578** or newer. You can download a recent version
 from the [JOSM site](https://josm.openstreetmap.de/) if you don’t have it, yet.
 
-The address data is served as vector data layer. You have to configure it once
-as background imagery layer.
+You can find this data in the menu *Imagery* › *Brandenburg GeoBasis-DE/LGB
+(2024): Georeferenzierte Adresse*. You have to be in Brandenburg with the main
+map for the menu entry to be shown.
 
-* *Preferences* (F12) › *Imagery* › *Imagery providers*.
-* Press the button *+ MVT* next to the bottom table *Selected entries*.
-* 2\. URL = `https://hfs.github.io/brandenburg-addresses/style.json`
-* 5\. Enter name for this layer = `Brandenburg GeoBasis-DE/LGB (2024):
-  Georeferenzierte Adresse`. If you use exactly this name (in German), it will
-  automatically be used for the mandatory attribution in the `source` tag when
-  uploading changsets.
-
-![Screenshot of the dialog to add a new imagery provider](/brandenburg-addresses/assets/images/imagery_en.png)
-
-Afterwards you can add the layer via the menu *Imagery* › *Brandenburg
-GeoBasis-DE/LGB (2024): Georeferenzierte Adresse*.
+![Screenshot of the imagery menu with the entry for this data highlighted](/brandenburg-addresses/assets/images/layer_en.png)
