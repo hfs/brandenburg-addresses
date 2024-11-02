@@ -48,7 +48,7 @@ function osm2pgsql.process_node(object)
             suburb = suburb,
             postcode = postcode,
             city = city,
-            geom = object.as_point()
+            geom = object:as_point()
         })
     end
 end
@@ -69,7 +69,7 @@ function osm2pgsql.process_way(object)
                 suburb = suburb,
                 postcode = postcode,
                 city = city,
-                geom = object.as_polygon()
+                geom = object:as_polygon()
             })
         else
             tables.address_line:insert({
@@ -79,7 +79,7 @@ function osm2pgsql.process_way(object)
                 suburb = suburb,
                 postcode = postcode,
                 city = city,
-                geom = object.as_linestring()
+                geom = object:as_linestring()
             })
         end
     end
@@ -100,7 +100,7 @@ function osm2pgsql.process_relation(object)
             suburb = suburb,
             postcode = postcode,
             city = city,
-            geom = object.as_multipolygon()
+            geom = object:as_multipolygon()
         })
     end
 end
