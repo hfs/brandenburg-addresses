@@ -116,8 +116,8 @@ CREATE TABLE geoadr_aggregation AS
     SELECT
         h3_10 AS h3_id,
         10 AS resolution,
-        COUNT(has_match) FILTER (WHERE has_match AND distance <= 75) AS match,
-        COUNT(has_match) FILTER (WHERE (NOT has_match OR distance > 75) AND NOT "ignore") AS missing,
+        CAST (COUNT(has_match) FILTER (WHERE has_match AND distance <= 75) AS integer) AS match,
+        CAST (COUNT(has_match) FILTER (WHERE (NOT has_match OR distance > 75) AND NOT "ignore") AS integer) AS missing,
         ST_ForcePolygonCW(ST_GeomFromEWKB(h3_cell_to_boundary_wkb(h3_10))) AS geom
     FROM
         geoadr_matches g
@@ -155,12 +155,41 @@ ALTER TABLE geoadr_aggregation ALTER COLUMN geom TYPE geometry(Polygon, 4326);
 CREATE INDEX ON geoadr_aggregation(resolution);
 CREATE INDEX ON geoadr_aggregation USING GIST(geom);
 
+-- Take an integer array and return an array of the same size where the values
+-- are distinct and strictly increasing. Examples:
+-- ARRAY[1, 1, 2, 4, 6] -> ARRAY[1, 2, 3, 4, 6]
+-- ARRAY[3, 1, 5, 4, 8] -> ARRAY[3, 4, 5, 6, 8]
+CREATE OR REPLACE FUNCTION make_distinct_increasing(input_array integer[])
+RETURNS integer[] AS $$
+DECLARE
+    result integer[];
+    current_value integer;
+    current_min integer := -2147483648;  -- Minimum possible integer value in PostgreSQL
+    i integer;
+BEGIN
+    -- Initialize result array with same size as input
+    result := array_fill(NULL::integer, ARRAY[array_length(input_array, 1)]);
+    -- Iterate through the input array
+    FOR i IN 1..array_length(input_array, 1) LOOP
+        current_value := input_array[i];
+        -- If current value is less than or equal to current_min
+        -- set it to current_min + 1
+        IF current_value <= current_min THEN
+            current_value := current_min + 1;
+        END IF;
+        -- Update current_min and add value to result
+        current_min := current_value;
+        result[i] := current_value;
+    END LOOP;
+    RETURN result;
+END;
+$$ LANGUAGE plpgsql;
+
 -- Calculate color breaks per resolution using k-means. The idea is similar to
 -- Jenks Natural Breaks. Going with k-means because an extension is readily
 -- available for PostgreSQL
 DROP TABLE IF EXISTS breakpoints;
 CREATE TABLE breakpoints AS
-
 SELECT
     "cluster" + 1 AS "cluster",
     resolution,
@@ -177,26 +206,17 @@ FROM
             kmeans(
                 ARRAY[missing], -- which attributes to use for the clustering
                 8, -- Number of desired classes. One more hardcoded class for missing==0 is added below
-                CASE
-                    WHEN res >= 7 THEN
-                        -- Using the percentiles doesn't work well for higher resolutions, because it has too many "1".
-                        -- k-means then delivers too few classes.
-                        -- Just use the linearly spaced values in this case.
-                        ARRAY(SELECT generate_series(
-                            (SELECT MIN(missing) FROM geoadr_aggregation WHERE resolution = res AND missing > 0),
-                            (SELECT MAX(missing) FROM geoadr_aggregation WHERE resolution = res AND missing > 0),
-                            (SELECT (MAX(missing) - MIN(missing)) / 7 AS step FROM geoadr_aggregation WHERE resolution = res AND missing > 0)
-                        ))
-                    ELSE
-                        -- Evenly spaced percentiles 0/7, 1/7, ...
-                        (
-                            SELECT
-                                percentile_disc(ARRAY(SELECT generate_series(0.0, 1.0, 1.0/7)))
-                                WITHIN GROUP (ORDER BY missing)
-                            FROM geoadr_aggregation
-                            WHERE resolution = res AND missing > 0
+                -- Evenly spaced percentiles 0/7, 1/7, ...
+                (
+                    SELECT
+                        make_distinct_increasing(
+                            percentile_disc(
+                                ARRAY(SELECT generate_series(0.0, 1.0, 1.0/7))
+                            ) WITHIN GROUP (ORDER BY missing)
                         )
-                    END
+                    FROM geoadr_aggregation
+                    WHERE resolution = res AND missing > 0
+                )
             ) OVER () AS "cluster",
             resolution,
             missing AS value
@@ -211,13 +231,15 @@ SELECT
     0 AS bound_upper
 FROM
     generate_series(5, 10) AS resolution
+ORDER BY
+    resolution,
+    "cluster"
 ;
-
 
 -- Function to export the overview polygons for a certain resolution
 CREATE OR REPLACE
 FUNCTION public.aggregation_for_resolution(z integer)
-RETURNS TABLE(geom geometry, "match" bigint, missing bigint, "cluster" int)
+RETURNS TABLE(geom geometry, "match" int, missing int, "cluster" int)
 AS $func$
     SELECT
         g.geom,
