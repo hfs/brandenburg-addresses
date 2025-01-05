@@ -34,8 +34,8 @@ Einstellungs-Dialog, wo man ein Tastenkürzel auswählen kann.
 ## Hintergrund-Ebenen
 
 Am besten fügt man zusätzlich zur Adress-Ebene noch das Luftbild `Brandenburg
-GeoBasis-DE/LGB (2024): DOP20c` und die „offizielle“ Karte `Brandenburg
-GeoBasis-DE/LGB (2024): WebAtlasDE BE/BB` hinzu. Mit den Tasten `Alt+1`,
+GeoBasis-DE/LGB (2025): DOP20c` und die „offizielle“ Karte `Brandenburg
+GeoBasis-DE/LGB (2025): WebAtlasDE BE/BB` hinzu. Mit den Tasten `Alt+1`,
 `Alt+2` usw. kann man schnell Ebenen ein- und ausblenden.
 
 

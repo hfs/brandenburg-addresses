@@ -30,7 +30,7 @@ Die Adressen als Datenquelle müssen einmalig eingerichtet werden.
    * 2\. _Enter Service URL_: `https://hfs.github.io/brandenburg-addresses/missing.pmtiles`
    * Haken setzen bei _Ist die Ebene richtig Georeferenziert?_
    * 3\. _Enter name for this source_:
-     `GeoBasis-DE/LGB (2024): Georeferenzierte Adresse`. Wenn man hier den
+     `GeoBasis-DE/LGB (2025): Georeferenzierte Adresse`. Wenn man hier den
      offiziellen Namen setzt, sorgt man gleich für die richtige Attributierung
      der Quelldaten beim Hochladen.
    * 4\. _What is the type of this source?_ `PMTILES`
@@ -45,7 +45,7 @@ Adressen im Kartenausschnitt automatisch geladen werden und schnell übernommen
 werden können.
 
 1. OSM-Daten im gewünschten Kartenausschnitt laden.
-2. Fehlende Adressen laden: _Daten › MapWithAI › GeoBasis-DE/LGB (2024): Georeferenzierte Adresse_
+2. Fehlende Adressen laden: _Daten › MapWithAI › GeoBasis-DE/LGB (2025): Georeferenzierte Adresse_
 3. Die möglicherweise fehlenden Adressen erscheinen in einem neuen Layer „MapWithAI“.  
 ![Bildschirmfoto von JOSM mit fehlenden Adress-Knoten in einer MapWithAI-Ebene. Die Ebene liegt über einer deaktivierten normalen Ebene mit OSM-Daten](/brandenburg-addresses/assets/images/mapwithai_layer_de.jpg)
 4. Jetzt überprüft man, welche von diesen Adressen übernommen werden sollen. Es

@@ -29,7 +29,7 @@ The Brandenburg addresses as data source have to be set up once.
    * 2\. _Enter Service URL_: `https://hfs.github.io/brandenburg-addresses/missing.pmtiles`
    * Check _Is the layer properly georeferenced?_
    * 3\. _Enter name for this source_:
-     `GeoBasis-DE/LGB (2024): Georeferenzierte Adresse`. By setting the
+     `GeoBasis-DE/LGB (2025): Georeferenzierte Adresse`. By setting the
      official name here, you ensure the correct attribution of the data source
      when uploading.
    * 4\. _What is the type of this source?_ `PMTILES`
@@ -43,7 +43,7 @@ The plugin supports address mapping by automatically loading any missing address
 Addresses can be transferred into the OSM data quickly.
 
 1. Load OSM data in the desired map view.
-2. Load missing addresses: _Data › MapWithAI › GeoBasis-DE/LGB (2024): Georeferenzierte Adresse_
+2. Load missing addresses: _Data › MapWithAI › GeoBasis-DE/LGB (2025): Georeferenzierte Adresse_
 3. The possibly missing addresses appear in a new layer “MapWithAI”.  
 ![Screenshot of JOSM with missing address nodes in a MapWithAI layer. The layer is above a deactivated normal layer with OSM data](/brandenburg-addresses/assets/images/mapwithai_layer_en.jpg)
 4. Now check which of these addresses are correct and can be adopted. There is
