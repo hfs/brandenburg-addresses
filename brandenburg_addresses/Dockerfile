@@ -1,11 +1,11 @@
-FROM docker.io/debian:testing AS tippecanoe-builder
+FROM docker.io/debian:bookworm AS tippecanoe-builder
 
 RUN apt-get update \
   && apt-get -y install build-essential libsqlite3-dev zlib1g-dev wget
 
 RUN mkdir -p /workdir/tippecanoe-src
 WORKDIR /workdir
-RUN wget "https://github.com/felt/tippecanoe/archive/refs/tags/2.32.1.tar.gz" -O tippecanoe.tar.gz
+RUN wget "https://github.com/felt/tippecanoe/archive/refs/tags/2.75.1.tar.gz" -O tippecanoe.tar.gz
 RUN tar -xf tippecanoe.tar.gz --strip-components=1 -C tippecanoe-src
 WORKDIR /workdir/tippecanoe-src
 # Should RUN make test, but that fails at the moment
@@ -13,7 +13,7 @@ RUN make
 CMD make
 
 # Using multistage build reduces the docker image size by a lot by only copying the needed binaries
-FROM docker.io/debian:testing
+FROM docker.io/debian:bookworm
 LABEL maintainer="openstreetmap.org@knackich.de"
 
 RUN apt-get update && \
