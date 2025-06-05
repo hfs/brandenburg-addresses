@@ -39,3 +39,7 @@ ogr2ogr -f GeoJSON /dev/stdout "$DB_CONNECTION" missing_with_osm_tags -nln missi
 
 echo ">>> Export clusters of missing addresses as polygons in GeoJSON format"
 ogr2ogr data/task_area.geojson "$DB_CONNECTION" -sql "SELECT * FROM task_area ORDER BY id" -nln task_area -lco RFC7946=YES
+
+echo ">>> Export Top 50 places with missing addresses"
+psql -c "\\COPY (SELECT * FROM geoadr_top_matches LIMIT 50) TO 'data/top.csv' (FORMAT CSV)"
+echo ">>> Export done"
