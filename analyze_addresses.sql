@@ -98,16 +98,17 @@ WHERE id IN (
 ALTER TABLE geoadr_matches ADD PRIMARY KEY(id);
 CREATE INDEX ON geoadr_matches USING GIST(geom);
 
+DROP VIEW IF EXISTS geoadr_top_matches;
 CREATE VIEW geoadr_top_matches AS
 SELECT
-    h3_10,
-    (h3_cell_to_lat_lng(h3_10))[1] AS lng,
-    (h3_cell_to_lat_lng(h3_10))[0] AS lat,
+    h3_cell_to_parent(h3_10, 8) AS h3_8,
+    (h3_cell_to_lat_lng(h3_cell_to_parent(h3_10, 8)))[1] AS lng,
+    (h3_cell_to_lat_lng(h3_cell_to_parent(h3_10, 8)))[0] as lat,
     COUNT(has_match) FILTER (WHERE NOT has_match AND NOT "ignore") AS "missing",
     mode() WITHIN GROUP (ORDER BY gmd) AS gmd,
     mode() WITHIN GROUP (ORDER BY str) AS str
 FROM geoadr_matches m
-GROUP BY h3_10
+GROUP BY h3_8
 ORDER BY "missing" DESC
 ;
 
