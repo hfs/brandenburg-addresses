@@ -1,0 +1,511 @@
+§Èx
+default(€ idhnradzaddresscategory"
+1"
+2"
+3"
+4"
+5"
+6"
+7"
+8"
+9"
+10"
+11"
+12"
+13"
+14"
+15"
+16"
+17"
+18"
+19"
+1a"
+1b"
+1c"
+1d"
+20"
+21"
+22"
+23"
+24"
+25"
+26"
+27"
+28"
+29"
+2a"
+2b"
+2c"
+2d"
+2e"
+30"
+31"
+32"
+33"
+34"
+35"
+36"
+37"
+38"
+39"
+40"
+41"
+42"
+43"
+44"
+45"
+46"
+47"
+48"
+49"
+4a"
+4b"
+50"
+51"
+52"
+53"
+54"
+55"
+56"
+57"
+58"
+59"
+60"
+61"
+62"
+63"
+64"
+65"
+66"
+67"
+68"
+69"
+70"
+71"
+72"
+73"
+74"
+75"
+76"
+77"
+78"
+79"
+80"
+81"
+82"
+83"
+84"
+85"
+86"
+87"
+88"
+89"
+90"
+91"
+92"
+93"
+94"
+95"
+96"
+98"
+99"
+9a"
+100"
+10a"
+11a"
+11b"
+13a"
+13b"
+14a"
+16a"
+16b"
+17a"
+17b"
+17c"
+17d"
+31a"
+34a"
+46a"
+46b"
+46c"
+46d"
+46e"
+47a"
+47b"
+47c"
+47d"
+47e"
+48a"
+48b"
+48c"
+48d"
+48e"
+59a"
+69a"
+75a"
+Ziegelhof 2, 19348 Perleberg"
+Ziegelhof 3, 19348 Perleberg"
+Ziegelhof 4, 19348 Perleberg"
+Ziegelhof 5, 19348 Perleberg"
+Ziegelhof 7, 19348 Perleberg"
+Grahlplatz 9, 19348 Perleberg" 
+FeldstraÃŸe 2, 19348 Perleberg" 
+FeldstraÃŸe 3, 19348 Perleberg" 
+Grahlplatz 10, 19348 Perleberg" 
+Grahlplatz 11, 19348 Perleberg" 
+Grahlplatz 12, 19348 Perleberg" 
+KarlstraÃŸe 1, 19348 Perleberg"!
+Grahlplatz 10a, 19348 Perleberg"!
+GrahlstraÃŸe 9, 19348 Perleberg"!
+KarlstraÃŸe 26, 19348 Perleberg"!
+UferstraÃŸe 14, 19348 Perleberg""
+ Beguinenwiese 1, 19348 Perleberg""
+ Beguinenwiese 2, 19348 Perleberg""
+ Beguinenwiese 3, 19348 Perleberg""
+ Beguinenwiese 4, 19348 Perleberg""
+ Beguinenwiese 5, 19348 Perleberg""
+ FeldstraÃŸe 100, 19348 Perleberg""
+ GrabenstraÃŸe 7, 19348 Perleberg""
+ GrabenstraÃŸe 8, 19348 Perleberg""
+ GrabenstraÃŸe 9, 19348 Perleberg""
+ GrahlstraÃŸe 10, 19348 Perleberg""
+ GrahlstraÃŸe 11, 19348 Perleberg""
+ GrahlstraÃŸe 12, 19348 Perleberg""
+ GrahlstraÃŸe 13, 19348 Perleberg""
+ GrahlstraÃŸe 14, 19348 Perleberg""
+ GrahlstraÃŸe 15, 19348 Perleberg""
+ GrahlstraÃŸe 16, 19348 Perleberg""
+ GrahlstraÃŸe 17, 19348 Perleberg""
+ GrahlstraÃŸe 18, 19348 Perleberg""
+ GrahlstraÃŸe 19, 19348 Perleberg""
+ GrahlstraÃŸe 20, 19348 Perleberg""
+ GrahlstraÃŸe 26, 19348 Perleberg""
+ GrahlstraÃŸe 27, 19348 Perleberg""
+ GrahlstraÃŸe 28, 19348 Perleberg""
+ UferstraÃŸe 14a, 19348 Perleberg""
+ ZiegelstraÃŸe 1, 19348 Perleberg""
+ ZiegelstraÃŸe 2, 19348 Perleberg""
+ ZiegelstraÃŸe 3, 19348 Perleberg""
+ ZiegelstraÃŸe 4, 19348 Perleberg""
+ ZiegelstraÃŸe 5, 19348 Perleberg""
+ ZiegelstraÃŸe 6, 19348 Perleberg"#
+!Beguinenwiese 10, 19348 Perleberg"#
+!Beguinenwiese 1a, 19348 Perleberg"#
+!Beguinenwiese 4a, 19348 Perleberg"#
+!Beguinenwiese 4b, 19348 Perleberg"#
+!GrabenstraÃŸe 10, 19348 Perleberg"#
+!GrabenstraÃŸe 11, 19348 Perleberg"#
+!GrabenstraÃŸe 12, 19348 Perleberg"#
+!GrabenstraÃŸe 14, 19348 Perleberg"#
+!GrabenstraÃŸe 15, 19348 Perleberg"#
+!GrabenstraÃŸe 16, 19348 Perleberg"#
+!GrabenstraÃŸe 17, 19348 Perleberg"#
+!GrabenstraÃŸe 18, 19348 Perleberg"#
+!GrabenstraÃŸe 19, 19348 Perleberg"#
+!GrabenstraÃŸe 20, 19348 Perleberg"#
+!RitterstraÃŸe 65, 19348 Perleberg"#
+!RitterstraÃŸe 67, 19348 Perleberg"#
+!RitterstraÃŸe 68, 19348 Perleberg"#
+!RitterstraÃŸe 69, 19348 Perleberg"#
+!RitterstraÃŸe 70, 19348 Perleberg"#
+!RitterstraÃŸe 71, 19348 Perleberg"#
+!RitterstraÃŸe 72, 19348 Perleberg"#
+!RitterstraÃŸe 73, 19348 Perleberg"#
+!RitterstraÃŸe 74, 19348 Perleberg"#
+!RitterstraÃŸe 75, 19348 Perleberg"#
+!RitterstraÃŸe 76, 19348 Perleberg"#
+!RitterstraÃŸe 77, 19348 Perleberg"#
+!RitterstraÃŸe 80, 19348 Perleberg"#
+!RitterstraÃŸe 81, 19348 Perleberg"#
+!RitterstraÃŸe 82, 19348 Perleberg"#
+!RitterstraÃŸe 83, 19348 Perleberg"#
+!RitterstraÃŸe 84, 19348 Perleberg"#
+!RitterstraÃŸe 85, 19348 Perleberg"#
+!RitterstraÃŸe 86, 19348 Perleberg"#
+!RitterstraÃŸe 87, 19348 Perleberg"#
+!RitterstraÃŸe 88, 19348 Perleberg"#
+!RitterstraÃŸe 89, 19348 Perleberg"#
+!RitterstraÃŸe 90, 19348 Perleberg"#
+!RitterstraÃŸe 91, 19348 Perleberg"#
+!RitterstraÃŸe 92, 19348 Perleberg"#
+!RitterstraÃŸe 93, 19348 Perleberg"#
+!RitterstraÃŸe 94, 19348 Perleberg"#
+!RitterstraÃŸe 95, 19348 Perleberg"$
+"BeguinenstraÃŸe 1, 19348 Perleberg"$
+"BeguinenstraÃŸe 2, 19348 Perleberg"$
+"BeguinenstraÃŸe 3, 19348 Perleberg"$
+"BeguinenstraÃŸe 4, 19348 Perleberg"$
+"BeguinenstraÃŸe 5, 19348 Perleberg"$
+"BeguinenstraÃŸe 6, 19348 Perleberg"$
+"BeguinenstraÃŸe 7, 19348 Perleberg"$
+"BeguinenstraÃŸe 8, 19348 Perleberg"$
+"GrabenstraÃŸe 13a, 19348 Perleberg"$
+"GrabenstraÃŸe 13b, 19348 Perleberg"$
+"RitterstraÃŸe 69a, 19348 Perleberg"$
+"RitterstraÃŸe 75a, 19348 Perleberg"%
+#BeguinenstraÃŸe 12, 19348 Perleberg"%
+#BeguinenstraÃŸe 13, 19348 Perleberg"%
+#BeguinenstraÃŸe 24, 19348 Perleberg"%
+#BeguinenstraÃŸe 32, 19348 Perleberg"%
+#BeguinenstraÃŸe 33, 19348 Perleberg"%
+#BeguinenstraÃŸe 34, 19348 Perleberg"%
+#BeguinenstraÃŸe 36, 19348 Perleberg"%
+#BeguinenstraÃŸe 37, 19348 Perleberg"%
+#BeguinenstraÃŸe 38, 19348 Perleberg"%
+#BeguinenstraÃŸe 40, 19348 Perleberg"%
+#BeguinenstraÃŸe 41, 19348 Perleberg"&
+$NachtigallstraÃŸe 2, 19348 Perleberg"&
+$NachtigallstraÃŸe 3, 19348 Perleberg"&
+$NachtigallstraÃŸe 4, 19348 Perleberg"&
+$NachtigallstraÃŸe 5, 19348 Perleberg"&
+$NachtigallstraÃŸe 6, 19348 Perleberg"&
+$NachtigallstraÃŸe 7, 19348 Perleberg"&
+$NachtigallstraÃŸe 8, 19348 Perleberg"&
+$Nebeliner StraÃŸe 1, 19348 Perleberg"&
+$Nebeliner StraÃŸe 2, 19348 Perleberg"&
+$Nebeliner StraÃŸe 3, 19348 Perleberg"&
+$Nebeliner StraÃŸe 4, 19348 Perleberg"'
+%Wilsnacker StraÃŸe 5, 19348 Perleberg"'
+%Wilsnacker StraÃŸe 6, 19348 Perleberg"'
+%Wilsnacker StraÃŸe 7, 19348 Perleberg"'
+%Wilsnacker StraÃŸe 8, 19348 Perleberg"'
+%Wilsnacker StraÃŸe 9, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 10, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 11, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 12, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 13, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 15, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 16, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 17, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 18, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 19, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 20, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 21, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 22, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 23, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 24, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 25, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 26, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 27, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 28, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 29, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 30, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 31, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 33, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 34, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 35, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 36, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 37, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 38, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 39, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 40, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 41, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 42, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 43, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 44, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 45, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 46, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 47, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 48, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 49, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 50, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 51, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 52, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 55, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 56, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 57, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 58, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 59, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 60, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 61, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 62, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 63, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 64, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 65, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 66, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 67, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 68, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 69, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 70, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 71, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 72, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 73, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 74, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 75, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 76, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 77, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 78, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 79, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 80, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 81, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 82, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 83, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 84, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 85, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 86, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 87, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 88, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 89, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 90, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 91, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 92, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 93, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 95, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 96, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 98, 19348 Perleberg"(
+&Wilsnacker StraÃŸe 99, 19348 Perleberg")
+'August-Bebel-StraÃŸe 1, 19348 Perleberg")
+'August-Bebel-StraÃŸe 2, 19348 Perleberg")
+'Wilsnacker StraÃŸe 16a, 19348 Perleberg")
+'Wilsnacker StraÃŸe 16b, 19348 Perleberg")
+'Wilsnacker StraÃŸe 31a, 19348 Perleberg")
+'Wilsnacker StraÃŸe 34a, 19348 Perleberg"*
+(August-Bebel-StraÃŸe 1a, 19348 Perleberg"*
+(Wittenberger StraÃŸe 17, 19348 Perleberg"*
+(Wittenberger StraÃŸe 18, 19348 Perleberg"*
+(Wittenberger StraÃŸe 19, 19348 Perleberg"*
+(Wittenberger StraÃŸe 20, 19348 Perleberg"*
+(Wittenberger StraÃŸe 21, 19348 Perleberg"*
+(Wittenberger StraÃŸe 22, 19348 Perleberg"*
+(Wittenberger StraÃŸe 23, 19348 Perleberg"*
+(Wittenberger StraÃŸe 24, 19348 Perleberg"*
+(Wittenberger StraÃŸe 25, 19348 Perleberg"*
+(Wittenberger StraÃŸe 26, 19348 Perleberg"*
+(Wittenberger StraÃŸe 27, 19348 Perleberg"*
+(Wittenberger StraÃŸe 28, 19348 Perleberg"*
+(Wittenberger StraÃŸe 29, 19348 Perleberg"*
+(Wittenberger StraÃŸe 30, 19348 Perleberg"*
+(Wittenberger StraÃŸe 31, 19348 Perleberg"*
+(Wittenberger StraÃŸe 32, 19348 Perleberg"*
+(Wittenberger StraÃŸe 33, 19348 Perleberg"*
+(Wittenberger StraÃŸe 34, 19348 Perleberg"*
+(Wittenberger StraÃŸe 46, 19348 Perleberg"*
+(Wittenberger StraÃŸe 47, 19348 Perleberg"*
+(Wittenberger StraÃŸe 48, 19348 Perleberg"*
+(Wittenberger StraÃŸe 49, 19348 Perleberg"*
+(Wittenberger StraÃŸe 50, 19348 Perleberg"*
+(Wittenberger StraÃŸe 51, 19348 Perleberg"*
+(Wittenberger StraÃŸe 52, 19348 Perleberg"*
+(Wittenberger StraÃŸe 53, 19348 Perleberg"*
+(Wittenberger StraÃŸe 54, 19348 Perleberg"*
+(Wittenberger StraÃŸe 58, 19348 Perleberg"*
+(Wittenberger StraÃŸe 59, 19348 Perleberg"*
+(Wittenberger StraÃŸe 60, 19348 Perleberg"*
+(Wittenberger StraÃŸe 61, 19348 Perleberg"*
+(Wittenberger StraÃŸe 62, 19348 Perleberg"*
+(Wittenberger StraÃŸe 63, 19348 Perleberg"*
+(Wittenberger StraÃŸe 64, 19348 Perleberg"*
+(Wittenberger StraÃŸe 65, 19348 Perleberg"*
+(Wittenberger StraÃŸe 66, 19348 Perleberg"*
+(Wittenberger StraÃŸe 68, 19348 Perleberg"*
+(Wittenberger StraÃŸe 69, 19348 Perleberg"*
+(Wittenberger StraÃŸe 70, 19348 Perleberg"*
+(Wittenberger StraÃŸe 71, 19348 Perleberg"*
+(Wittenberger StraÃŸe 72, 19348 Perleberg"*
+(Wittenberger StraÃŸe 73, 19348 Perleberg"*
+(Wittenberger StraÃŸe 74, 19348 Perleberg"*
+(Wittenberger StraÃŸe 75, 19348 Perleberg"+
+)Friedrich-Engels-Platz 2, 19348 Perleberg"+
+)Friedrich-Engels-Platz 3, 19348 Perleberg"+
+)Friedrich-Engels-Platz 4, 19348 Perleberg"+
+)Friedrich-Engels-Platz 5, 19348 Perleberg"+
+)Friedrich-Engels-Platz 6, 19348 Perleberg"+
+)Friedrich-Engels-Platz 7, 19348 Perleberg"+
+)Friedrich-Engels-Platz 8, 19348 Perleberg"+
+)Friedrich-Engels-Platz 9, 19348 Perleberg"+
+)GenossenschaftsstraÃŸe 1, 19348 Perleberg"+
+)GenossenschaftsstraÃŸe 3, 19348 Perleberg"+
+)GenossenschaftsstraÃŸe 4, 19348 Perleberg"+
+)GenossenschaftsstraÃŸe 5, 19348 Perleberg"+
+)Heinrich-Heine-StraÃŸe 1, 19348 Perleberg"+
+)Heinrich-Heine-StraÃŸe 2, 19348 Perleberg"+
+)Heinrich-Heine-StraÃŸe 3, 19348 Perleberg"+
+)Heinrich-Heine-StraÃŸe 4, 19348 Perleberg"+
+)Heinrich-Heine-StraÃŸe 5, 19348 Perleberg"+
+)Heinrich-Heine-StraÃŸe 6, 19348 Perleberg"+
+)Heinrich-Heine-StraÃŸe 7, 19348 Perleberg"+
+)Heinrich-Heine-StraÃŸe 8, 19348 Perleberg"+
+)Heinrich-Heine-StraÃŸe 9, 19348 Perleberg"+
+)Wittenberger StraÃŸe 46a, 19348 Perleberg"+
+)Wittenberger StraÃŸe 59a, 19348 Perleberg",
+*Friedrich-Engels-Platz 10, 19348 Perleberg",
+*Friedrich-Engels-Platz 12, 19348 Perleberg",
+*Friedrich-Engels-Platz 14, 19348 Perleberg",
+*Friedrich-Engels-Platz 16, 19348 Perleberg",
+*Friedrich-Engels-Platz 17, 19348 Perleberg",
+*GenossenschaftsstraÃŸe 1a, 19348 Perleberg",
+*GenossenschaftsstraÃŸe 1b, 19348 Perleberg",
+*GenossenschaftsstraÃŸe 1c, 19348 Perleberg",
+*GenossenschaftsstraÃŸe 1d, 19348 Perleberg",
+*GenossenschaftsstraÃŸe 2a, 19348 Perleberg",
+*GenossenschaftsstraÃŸe 2b, 19348 Perleberg",
+*GenossenschaftsstraÃŸe 2c, 19348 Perleberg",
+*GenossenschaftsstraÃŸe 2d, 19348 Perleberg",
+*GenossenschaftsstraÃŸe 2e, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 10, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 11, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 12, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 13, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 14, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 15, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 16, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 17, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 18, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 19, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 20, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 21, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 22, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 49, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 50, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 51, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 52, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 56, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 57, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 58, 19348 Perleberg",
+*Heinrich-Heine-StraÃŸe 59, 19348 Perleberg",
+*St.-Nicolai-Kirchplatz 15, 19348 Perleberg"-
++Friedrich-Engels-Platz 17a, 19348 Perleberg"-
++Friedrich-Engels-Platz 17b, 19348 Perleberg"-
++Friedrich-Engels-Platz 17c, 19348 Perleberg"-
++Friedrich-Engels-Platz 17d, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 11a, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 11b, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 46a, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 46b, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 46c, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 46d, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 46e, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 47a, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 47b, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 47c, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 47d, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 47e, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 48a, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 48b, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 48c, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 48d, 19348 Perleberg"-
++Heinrich-Heine-StraÃŸe 48e, 19348 Perleberg"-
++St.-Nicolai-KirchstraÃŸe 9, 19348 Perleberg".
+,St.-Nicolai-KirchstraÃŸe 10, 19348 Perleberg".
+,St.-Nicolai-KirchstraÃŸe 11, 19348 Perleberg".
+,St.-Nicolai-KirchstraÃŸe 9a, 19348 Perleberg"  " " €è*" €ê*" €î*" €ñ*" +" ê*" ñ*" ‚è*" ‚ê*" ‚ñ*" ƒ+" ƒê*" ƒï*" ƒñ*" „ê*" „ñ*" „ö)" …ê*" …ï*" …ñ*" †+" †è*" †ê*" †ñ*" ‡ñ*" ˆ+" ˆñ*" ‰ï*" ‰ñ*" Š+" Š•*" Šè*" Šï*" Šñ*" ‹ñ*" Œ+" Œ–)" Œï*" Œñ*" Œô)" é*" ñ*" ñ*" ö*" ‚*" Œ+" ß)" ï*" ñ*" Œ+" í*" ‘é*" ’í*" “Œ+" ”œ)" •é*" •ï*" –*" –Œ+" —‡*" —ï*" ˜é*" ˜ï*" ™é*" šÔ)" ›Œ+" œŒ+" œé*" é*" í*" ŸŒ+"  ç)" ¢Œ+" ¢é*" ¢ñ*" £ñ*" ¤Õ*" ¤ñ*" ¥Õ*" ¥é*" ¥ñ*" ¦Œ+" ¦Õ*" ¦ñ*" §í*" §ñ*" §ü)" ¨Œ+" ¨Õ*" ¨ñ*" ©ñ*" ª‹+" ªé*" ªí*" ªñ*" «Œ+" «Ï*" «ñ*" ¬‹+" ¬í*" ¬ï*" ¬ñ*" ­é*" ­ñ*" ®‹+" ®Œ+" ®é*" ®ï*" ®ñ*" ¯‹+" ¯Œ+" ¯é*" ¯í*" ¯ñ*" ¯ú)" °ñ*" ±Ù)" ±é*" ±í*" ±ñ*" ²Œ+" ²Ï*" ²í*" ²ï*" ²ñ*" ³‹+" ³ï*" ³ñ*" ´Œ+" ´+" ´Ş)" ´ñ*" µ+" µé*" µí*" µñ*" ¶‹+" ¶+" ¶ï*" ·+" ·í*" ·ñ*" ¸Œ+" ¸+" ¸é*" ¸ñ*" ¹‹+" ¹ñ*" ºŒ+" ºÏ*" ºé*" ºñ*" »‹+" »é*" »ñ*" ¼+" ¼é*" ¼ñ*" ½‹+" ½+" ½è*" ½é*" ½ñ*" ¾Œ+" ¾+" ¾é*" ¾ï*" ¾ñ*" ¿+" ¿é*" ÀŒ+" À+" Àé*" Áé*" Â‹+" Âé*" Ã+" ÃÏ*" Ãé*" Ãê)" Ãï*" Ä‹+" ÄŒ+" Ä+" Äé*" ÅŒ+" Å+" ÅÏ*" Åé*" Æ+" Æé*" Ç+" Çé*" È‹+" ÈŒ+" È+" Èé*" É‹+" Éé*" Éğ*" Êé*" Ë‹+" ËŒ+" Ëé*" Ëğ*" Ì‹+" Ìé*" Ìó)" Í‹+" Í+" Íé*" Íí*" Íğ*" Î‹+" ÎŒ+" ÎÏ*" Îé*" Îğ*" Îú)" Ï+" Ïé*" ĞÙ)" Ğé*" Ğğ*" Ğò)" Ñé*" Ñí*" Òé*" Ó+" ÓÔ)" Óè)" Óé*" ÔÕ*" Ôé*" Ôí*" ÕÕ*" Õé*" ÖÏ*" Öé*" ×Ï*" ×é*" ØÏ*" Øé*" Øë)" Ùé*" Ùí*" Ú+" Úé*" Úô*" Úö*" Ûé*" Ûô*" Üé*" Üì*" Üö*" İ+" İé*" İö*" Ş+" Şé*" Şí*" Şö*" ßé*" à+" àé*" á+" áé*" áì*" â+" âé*" ãé*" ä+" äÏ*" äé*" äí*" åè*" åé*" åí*" æ+" æ®)" æé*" æõ)" çé*" èé*" éé)" éé*" éì*" ê+" êÏ*" êé*" êì*" êí*" ëé*" ëï)" ìé*" íé*" íú)" îÏ*" îé*" ïé*" ğÏ*" ğé*" ñç*" ñé*" òé*" òî*" óé*" ôé*" õç*" õé*" õî*" öç*" öé*" öì*" ÷€*" ÷‹+" ÷ç*" ÷é*" ÷î*" ø‹+" øÏ*" øç*" øé*" ùé*" ú‹+" úé*" ûÏ*" ûÔ*" ûé*" ûì*" ûî*" üç*" üé*" ıç*" ıé*" şÈ)" şç*" şé*" şê)" şì*" şğ*" ÿÎ)" ÿç*" ÿé*" ÿî*" ÿğ* é†é"	® ì‡é"	m ğˆé"	B ä …é"	;Ú æ–é"	eÚ	 –n¤é"	‘„ ›*úé"	ú œœé"	¾™ ¡	¨é"	²W ©
+©é"	  ’U”é"	Èa ²Ïê"	¢3} Ã
+çê"	è3 ·åê"	°4m ¹mèê"	Ê57 €§é"	ú; Ë¥é"	î<‡ ä¦é"	º<Y ı®é"	Àê š²é"	èÚ ‹°é"	ÔŞ †¯é"	–Ä ±é"	˜ì ‰«é"	æj Ã¬é"	Æ¾ µªé"	†  ÷­é"	š¢ §´é"	øî ©µé"	ºØ ²”é"	¨ ·	—é"	Ü² ¿o›é"	²â £³é"	Ü² ã•é"	’
+ •)ùé"	ò’ ”(øé"	¦ä ‘'÷é"	Ş° Œ õé"	ÌÌ
+ &öé"	’‚ ƒòé"	ş°	 …óé"	ÄŞ	 ‚ñé"	¾ü şğé"	àÒ ‡ôé"	†–
+ ĞD„é"	Úª É?‚é"	’² Ì@ƒé"	€  Ä
+˜é"	¢® Ê™é"	´	 øîé"	¶ü ôíé"	ÜÔ îëé"	Ğ	Ô ñìé"	ˆ	¤ Äêé"	˜
+ø ¿éé"	 º ˆS’é"	äx ‚Qé"	Úì …R‘é"	†¤ üOé"	ŞÜ øNé"	¬° şPé"	†„ úïé"	ˆ¢ âHˆé"	Ü	Ì
+ ÜF†é"		À ŞG‡ê"	¸	Š êJŠé"	°
+à	 îK‹é"	ä
+–	 òLŒé"	˜Ì çI‰é"	Š
+–
+ ÒE…é"	Â¢ ×Œ«é"	ŞÖ ¾9şé"	òÒ »8ıé"	œÖ ¸7üé"	ÜÊ µ6ûé"	î† ¶}ªé"	–ö À<ÿé"	Ö¢ Ä=€é"	¢Ì Å>é"	Äœ T“é"	¦  ÷1ıé"	ö ñ0üé"	ê€ å.ûé"	æŒ á-úé"	®ˆ è çé"	‚ öèé"	æ˜ Û,ùé"	„† ‰éé"	¼˜ Ïşé"	ºˆ Öÿé"	Ø– Ÿ„é"	êÎ æ€é"	¢¸ éé"	şä ‘ƒé"	Øğ õ‚é"	èÄ Î*øé"	®ô È)÷é"	ª‚ êé"	ˆ ¦ëé"	Ğ† ¤ìé"	˜€ ¿(öé"	’ ¾îé"	ş¸ ´íé"	òŠ óé"	Öì »yÒé"	àÖ> ‰	¬é"	€è6 ƒœé"	²Š6 ı›é"	´ú4 ¬¯é"	Æü; ´wĞé"	‚Œ= ¸xÑé"	¾	À> °°é"	„
+„= ™­é"	Şğ8  ®é"	¼Î: ¯ãé"	Üò" ªèé"	àÄ% Ø˜é"	äè/ Æ•é"	Ìú, Í–é"	˜ê- Ó—é"	šş. ¦ âé"	Şü& Ô5¯é"	ˆØ# ×6°é"	 â$ Ù7±é"	´€* İ9³é"	äø/ å>¶é"	ä†, â=µé"	´´- ß<´é"	”´. è™é"	Ä¤1 óšé"	’´3 Û8²é"	ÂŒ1 Ÿôé"	®!¶ °õê"	ä"Ì £é"	ò% €;Àé"	Â"ä ı:¿é"	´$Ô	 ï¢é"	’%¸
+ à¡é"	ê%˜ í	½é"	¨'Ú	 Õ é"	Æ&ü Í¾é"	'Ê ¾ Ÿé"	Ô'’ Óé"	Ö/B ¼é"	Â-æ ˆ»é"	ü.Î „ºê"	Â/ ÿ¹é"	ü/Æ Ç0ªé"	ú!Ü ¹-§é"	Æ#º ¶,¦é"	ì#ˆ ½.¨é"	ö"  Ã/©é"	Â"ü ©{æé"	ä%ª ¯*¤é"	ä$ô ±|çé"	Â$´ «)£é"	%” §'¢é"	ü'‚ ³+¥é"	¼$¸ ùH¾é"	–%è üI¿é"	Ø%’ …LÂé"	ä'ü ƒKÁé"	´'¬ ÿJÀé"	Æ&Š £&¡é"	ğ(ş   é"	È)° ›é"	¼+ä Œšé"	ô+¼ ˜é"	¦*ä —é"	à*¬ šŸé"	„*„ ”œé"	Š+ˆ Úvåé"	¶- Õuäé"	Ì.ò Ñ“é"	æ/Ö à”é"	Š.ô ğ•é"	„.Ô „˜é"	ä,ê ‡™é"	¬,” —é"	-Â û–é"	Ö-œ XÎé"	’.Î YÏé"	â.’  ZĞé"	/æ £[Ñé"	Ş/¸ PÆé"	à)ş ŒOÅé"	š)Ä ’RÈé"	Œ+ö •SÉé"	Ğ+Â ‘QÇé"	¸*¸ †MÃé"	”(Ê ˆNÄé"	Ê(’ ˜UËé"	Â,ì –TÊé"	Œ,– šVÌé"	Œ-² ›WÍé"	Î-€ Öt¶é"	–2Ø ½	æê"	Ü4 ”Çé"	ª7æ ‹Æê"	ê7® ±Êé"	Ü5€ «Éé"	²6Ğ —Èé"	ğ6š òé"	À0Â
+ ÷é"	¼1î
+ ú‘é"	„3Î õ¸é"	Ê0Š ï ·é"	ª1ä ’é"	È3š Š“é"	Î4À º‘é"	Ş5º Úsğé"	²9ş Ørïé"	ú9¾ ûÅê"	 8€ ÜÄé"	à8Æ ÂÃé"	Ğ:t œ	Áé"	¼; ¦
+Âé"	Š;B ´é"	„9 ‹ šé"	®:ú ùjßé"	Ô;æ ¯
+é"	Š=Ö ®	é"	î=ˆ ¨Œé"	€?â	 ¢‹é"	Ê?ø ªé"	º>¼
+ ükàé"	Ú=Æ láé"	¾>„ Ç’é"	¼3ä ¼cÙé"	¨3ú ÂdÚé"	æ3Ò ­]Óé"	È0î ³`Öé"	ü1ğ ®^Ôé"	„1Ä °_Õé"	È1” ¨\Òé"	–0 ·a×é"	°2Ì ¹bØé"	â2ª ğfÜé"	ö4ò ìeÛé"	¦4¨ ógİé"	Ş5° ‚NÍé"	š6ˆ ¡MÌé"	ø7Ü Àñé"	€5Ğ ºOÎé"	ü5º öiŞé"	š9œ KËé"	Â>ğ ’`İé"	„;ş „aŞé"	°;Ø ûbßé"	à;º Z×é"	ä8ö ]Úé"	ü9ö ½[Øé"	˜9Ê Ş\Ùé"	Ğ9œ Ë^Ûé"	¢:Ğ º_Üé"	Ô:¦ ¥gäé"	Ì=ì ¤håé"	ü=Æ Ådáé"	À<ê “eâé"	ò<Â İcàé"	<’ Áfãé"	š=˜ —iæé"	¨>¢ Î3­é"	° î! Ì2¬é"	Ş °! É1«é"	ˆ!è  Ò4®é"	€ ¸" óE»é"	À#€" ñDºé"	è"ò" îC¹é"	¢"Î# çA·é"	ì Æ% ëB¸é"	¸!Ú$ ôEÎé"	€#' øG½é"	Ú$¶  õF¼é"	†$¤! íDÍé"	¦$è' ˜ ¡é"	¢#°) œ¢é"	¤$ò) êCÌé"	¸%´(  £é"	ê%Ä* áBËé"	°'¶) ¥¤é"	ä&–+ ÑVÕé"	‚+¾% ‡WÖé"	š-Ü# ßRÑé"	ú/¸& ĞQĞé"	Â/¨' ™UÔé"	”+Ô( ²òé"	˜*´* ¬¥é"	¼(ˆ, ­¦é"	œ)¶, ±§é"	Ş)Ø, ³¨é"	¬*„- ¼©é"	à+ò- «PÏé"	Œ/( Ï>Êé"	Ü,”, Æ=Éé"	²-À, Â	ºé"	à-ò. ¼<Èé"	˜/Ü, Ê
+»é"	®/Î/ ÔpÔé"	â.¸5 íTÓé"	ş0º$ ÈSÒé"	²0Ì% Š ê"	Ğ6ì  ë%¹é"	ê4Â& Á$¸é"	¦4Ê' »#·é"	ì3¼( ¸"¶é"	´3¬) ¶!µé"	ú2œ* ®9Çé"	´0î- ª‹äé"	˜7¸+ ¢ˆáé"	Ô5´. ›‡àé"	5/ ¨Šãé"	Æ6Ø, ¥‰âé"	Œ6Ê- €Ÿé"	š9ê" òé"	Â8’$ Ÿ±é"	¢9È' ™ é"	 =†' ¢²é"	¤:Š( §³é"	€;º( –†ßé"	;ª- “…Şé"	Ê:®. „İé"	„:¶/ ¬´é"	¾<) ÙqÕé"	Â0˜0 ã¼é"	˜3Œ2 ë½é"	†4Ä2 ù¾é"	ö4ş2 ÿ¿é"	à5¶3 ŠƒÜé"	Â9¸0 †‚Ûé"	9œ1 Àé"	†95 •Áé"	î9Ä5 ¡Âé"	Ø:ü5 ¤Ãé"	Â;²6 ôØé"	?æ1 ö€Ùé"	À?„1 ï~×é"	Ä>ö2 ì}Öé"	Š>æ3 ­Äé"	ò>8 µÅé"	Ö?Â8 ÀzÓé"	ì‚@ “‰é"	ü@à Šé"	@€ şé"	€A¨ úÚé"	@ê/ ÁÆé"	Ä@ü8
