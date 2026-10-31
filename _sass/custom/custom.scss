@@ -1,0 +1,68 @@
+.map-container {
+    display: flex;
+}
+
+#map {
+    height: 465px;
+    flex-grow: 2;
+}
+
+#comment {
+    position: relative;
+    min-height: 100px;
+    border: 3px black;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    background: LemonChiffon;
+    box-shadow: 5px 10px 18px #888888;
+}
+
+#comment-content {
+    background: LemonChiffon;
+    position: relative;
+}
+
+
+#comment:before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background: LemonChiffon;
+    box-sizing:border-box;
+    transform: rotate(-45deg) translate(calc(+50% + 10px));
+    border-top: inherit;
+    border-left: inherit;
+}
+
+#map .mapboxgl-ctrl-attrib {
+    background-color: hsla(0, 0%, 100%, 0.8);
+}
+
+@media(min-width: 1400px) {
+    .map-container {
+        width: 960px;
+        align-items: flex-start;
+    }
+    #comment {
+        width: 15rem;
+    }
+    #comment:before {
+        top: 15%;
+        right: 100%;
+    }
+}
+
+@media(max-width: 1400px) {
+    .map-container {
+        flex-direction: column;
+    }
+    #comment {
+        max-width: 30rem;
+    }
+    #comment:before {
+        top: 10px;
+        left: 15%;
+    }
+}
